@@ -3,11 +3,11 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Star Shift | Battle Traits Reference</title>
+  <title>Grounded Prison | Battle Traits Reference</title>
   <link rel="stylesheet" href="../../assets/css/styles.css" />
 
   <style>
-    .star-shift-grid {
+    .grounded-prison-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
       gap: 12px;
@@ -22,7 +22,7 @@
     }
 
     .creature-name {
-      margin-bottom: 10px;
+      margin: 0 0 10px;
       color: #ffffff;
       font-size: 15px;
       font-weight: 900;
@@ -47,6 +47,7 @@
     }
 
     .creature-type {
+      margin: 0;
       color: rgba(242, 246, 255, 0.82);
       font-size: 12.5px;
       font-weight: 800;
@@ -59,7 +60,7 @@
     }
 
     .info-label {
-      margin-bottom: 5px;
+      margin: 0 0 5px;
       color: rgba(242, 246, 255, 0.58);
       font-size: 12px;
       font-weight: 900;
@@ -67,6 +68,7 @@
     }
 
     .info-text {
+      margin: 0;
       color: rgba(255, 255, 255, 0.9);
       font-size: 12.5px;
       font-weight: 700;
@@ -90,7 +92,6 @@
       font-size: 11.5px;
       font-weight: 800;
     }
-
 
     .filter-area {
       margin: 12px 0 16px;
@@ -149,7 +150,7 @@
     }
 
     @media (max-width: 560px) {
-      .star-shift-grid {
+      .grounded-prison-grid {
         grid-template-columns: 1fr;
       }
 
@@ -168,11 +169,11 @@
 
     <section class="detail-panel">
       <p class="detail-kicker">Trait Details</p>
-      <h1 class="detail-title">Star Shift</h1>
+      <h1 class="detail-title">Grounded Prison</h1>
 
       <div class="detail-description-box">
-        <strong>Variant Temporary Cards Containing [Star Shift].</strong><br />
-        <strong>Max-Level Effect:</strong> Activates at the start of battle and transfers one unactivated negative trait to the opponent (<strong>Power 718</strong>).
+        <strong>Variant Temporary Cards Containing [Grounded Prison].</strong><br />
+        <strong>Max-Level Effect:</strong> Activates at the start of battle. The target trait <strong>[Take in Passing]</strong> is disabled, and the disabled trait will fail the next time it would activate (<strong>Power 664</strong>).
       </div>
 
       <div class="gallery-header">
@@ -196,297 +197,259 @@
         <p class="no-results-message" id="no-results-message">No cards match this filter.</p>
       </div>
 
+      <div class="grounded-prison-grid">
 
-      <div class="star-shift-grid">
-
-        <article class="creature-card" data-parts="head neck tail">
-          <h2 class="creature-name">Jade Fox [Temporary]</h2>
-
+        <article class="creature-card" data-parts="head back">
+          <h2 class="creature-name">Hermit Claw Crab [Temporary]</h2>
           <div class="creature-top">
-            <img class="creature-icon" src="../../images/star-shift/icons/01-jade-fox-icon.png" alt="Jade Fox [Temporary]" />
-            <p class="creature-type">Type: 8,000 Years · Mount</p>
+            <img class="creature-icon" src="../../images/grounded-prison/icons/01-hermit-claw-crab-icon.png" alt="Hermit Claw Crab [Temporary]" />
+            <p class="creature-type">Type: Mount</p>
           </div>
-
           <div class="info-section">
             <p class="info-label">Trade Info</p>
             <div class="trade-line">
-              <span class="trade-pill">Auction</span>
-              <span class="trade-pill">Request</span>
-            </div>
-          </div>
-
-          <div class="info-section">
-            <p class="info-label">Special Attribute</p>
-            <p class="info-text">Self and Variant Parts: Jade Fox Head, Jade Fox Tail, Jade Fox Neck</p>
-          </div>
-        </article>
-
-        <article class="creature-card" data-parts="head neck tail">
-          <h2 class="creature-name">Frost Fox [Temporary]</h2>
-
-          <div class="creature-top">
-            <img class="creature-icon" src="../../images/star-shift/icons/02-frost-fox-icon.png" alt="Frost Fox [Temporary]" />
-            <p class="creature-type">Type: 10,000 Years · Mount</p>
-          </div>
-
-          <div class="info-section">
-            <p class="info-label">Trade Info</p>
-            <div class="trade-line">
-              <span class="trade-pill">Auction</span>
-              <span class="trade-pill">Request</span>
-            </div>
-          </div>
-
-          <div class="info-section">
-            <p class="info-label">Special Attribute</p>
-            <p class="info-text">Self and Variant Parts: Frost Fox Head, Frost Fox Tail, Frost Fox Neck</p>
-          </div>
-        </article>
-
-        <article class="creature-card" data-parts="head neck tail">
-          <h2 class="creature-name">Fire Fox [Temporary]</h2>
-
-          <div class="creature-top">
-            <img class="creature-icon" src="../../images/star-shift/icons/03-fire-fox-icon.png" alt="Fire Fox [Temporary]" />
-            <p class="creature-type">Type: 10,000 Years · Mount</p>
-          </div>
-
-          <div class="info-section">
-            <p class="info-label">Trade Info</p>
-            <div class="trade-line">
-              <span class="trade-pill">Auction</span>
-              <span class="trade-pill">Request</span>
-            </div>
-          </div>
-
-          <div class="info-section">
-            <p class="info-label">Special Attribute</p>
-            <p class="info-text">Self and Variant Parts: Fire Fox Head, Fire Fox Tail, Fire Fox Neck</p>
-          </div>
-        </article>
-
-        <article class="creature-card" data-parts="head neck tail">
-          <h2 class="creature-name">Hill Fox [Temporary]</h2>
-
-          <div class="creature-top">
-            <img class="creature-icon" src="../../images/star-shift/icons/04-hill-fox-icon.png" alt="Hill Fox [Temporary]" />
-            <p class="creature-type">Type: 5,000 Years · Mount</p>
-          </div>
-
-          <div class="info-section">
-            <p class="info-label">Trade Info</p>
-            <div class="trade-line">
-              <span class="trade-pill">Auction</span>
-              <span class="trade-pill">Request</span>
-            </div>
-          </div>
-
-          <div class="info-section">
-            <p class="info-label">Special Attribute</p>
-            <p class="info-text">Self and Variant Parts: Hill Fox Head, Hill Fox Tail, Hill Fox Neck</p>
-          </div>
-        </article>
-
-        <article class="creature-card" data-parts="horn head neck tail">
-          <h2 class="creature-name">Nine-Fury Fox [Temporary]</h2>
-
-          <div class="creature-top">
-            <img class="creature-icon" src="../../images/star-shift/icons/05-ninety-thousand-fox-icon.png" alt="Ninety-Thousand Fox [Temporary]" />
-            <p class="creature-type">Type: 8,000 Years · Mount</p>
-          </div>
-
-          <div class="info-section">
-            <p class="info-label">Trade Info</p>
-            <div class="trade-line">
-              <span class="trade-pill">Auction</span>
-              <span class="trade-pill">Request</span>
-            </div>
-          </div>
-
-          <div class="info-section">
-            <p class="info-label">Special Attribute</p>
-            <p class="info-text">Self and Variant Parts: Nine-Fury Fox Horn, Nine-Fury Fox Head, Nine-Fury Fox Tail, Nine-Fury Fox Neck</p>
-          </div>
-        </article>
-
-        <article class="creature-card" data-parts="head tail wings">
-          <h2 class="creature-name">Juvenile · Yaya [Temporary]</h2>
-
-          <div class="creature-top">
-            <img class="creature-icon" src="../../images/star-shift/icons/06-juvenile-yaya-icon.png" alt="Juvenile · Yaya [Temporary]" />
-            <p class="creature-type">Type: Juvenile · Mount</p>
-          </div>
-
-          <div class="info-section">
-            <p class="info-label">Trade Info</p>
-            <div class="trade-line">
-              <span class="trade-pill">Discard</span>
+              <span class="trade-pill">Drop</span>
               <span class="trade-pill">Trade</span>
               <span class="trade-pill">Auction</span>
               <span class="trade-pill">Request</span>
             </div>
           </div>
-
           <div class="info-section">
             <p class="info-label">Special Attribute</p>
-            <p class="info-text">Self and Variant Parts: Yaya Head, Yaya Wing, Yaya Tail</p>
-          </div>
-        </article>
-
-        <article class="creature-card" data-parts="head neck tail">
-          <h2 class="creature-name">100 Years · Hill Fox [Temporary]</h2>
-
-          <div class="creature-top">
-            <img class="creature-icon" src="../../images/star-shift/icons/07-100-years-hill-fox-icon.png" alt="100 Years · Hill Fox [Temporary]" />
-            <p class="creature-type">Type: 500 Years · Mount</p>
-          </div>
-
-          <div class="info-section">
-            <p class="info-label">Trade Info</p>
-            <div class="trade-line">
-              <span class="trade-pill">Trade</span>
-              <span class="trade-pill">Auction</span>
-              <span class="trade-pill">Request</span>
-            </div>
-          </div>
-
-          <div class="info-section">
-            <p class="info-label">Special Attribute</p>
-            <p class="info-text">Self and Variant Parts: Hill Fox Head, Hill Fox Tail, Hill Fox Neck</p>
-          </div>
-        </article>
-
-        <article class="creature-card" data-parts="head tail wings">
-          <h2 class="creature-name">100 Years · Yaya [Temporary]</h2>
-
-          <div class="creature-top">
-            <img class="creature-icon" src="../../images/star-shift/icons/08-100-years-yaya-icon.png" alt="100 Years · Yaya [Temporary]" />
-            <p class="creature-type">Type: 500 Years · Mount</p>
-          </div>
-
-          <div class="info-section">
-            <p class="info-label">Trade Info</p>
-            <div class="trade-line">
-              <span class="trade-pill">Trade</span>
-              <span class="trade-pill">Auction</span>
-              <span class="trade-pill">Request</span>
-            </div>
-          </div>
-
-          <div class="info-section">
-            <p class="info-label">Special Attribute</p>
-            <p class="info-text">Self and Variant Parts: Yaya Head, Yaya Wing, Yaya Tail</p>
-          </div>
-        </article>
-
-        <article class="creature-card" data-parts="head neck tail">
-          <h2 class="creature-name">10,000 Years · Hill Fox [Temporary]</h2>
-
-          <div class="creature-top">
-            <img class="creature-icon" src="../../images/star-shift/icons/09-10000-years-hill-fox-icon.png" alt="10,000 Years · Hill Fox [Temporary]" />
-            <p class="creature-type">Type: 18,000 Years · Mount</p>
-          </div>
-
-          <div class="info-section">
-            <p class="info-label">Trade Info</p>
-            <div class="trade-line">
-              <span class="trade-pill">Auction</span>
-              <span class="trade-pill">Request</span>
-            </div>
-          </div>
-
-          <div class="info-section">
-            <p class="info-label">Special Attribute</p>
-            <p class="info-text">Self and Variant Parts: Hill Fox Head, Hill Fox Tail, Hill Fox Neck</p>
-          </div>
-        </article>
-
-        <article class="creature-card" data-parts="head tail wings">
-          <h2 class="creature-name">10,000 Years · Yaya [Temporary]</h2>
-
-          <div class="creature-top">
-            <img class="creature-icon" src="../../images/star-shift/icons/10-10000-years-yaya-icon.png" alt="10,000 Years · Yaya [Temporary]" />
-            <p class="creature-type">Type: 13,000 Years · Mount</p>
-          </div>
-
-          <div class="info-section">
-            <p class="info-label">Trade Info</p>
-            <div class="trade-line">
-              <span class="trade-pill">Auction</span>
-              <span class="trade-pill">Request</span>
-            </div>
-          </div>
-
-          <div class="info-section">
-            <p class="info-label">Special Attribute</p>
-            <p class="info-text">Self and Variant Parts: Yaya Head, Yaya Wing, Yaya Tail</p>
-          </div>
-        </article>
-
-        <article class="creature-card" data-parts="horn head neck tail">
-          <h2 class="creature-name">Bewitched Nine-Fury Fox [Temporary]</h2>
-
-          <div class="creature-top">
-            <img class="creature-icon" src="../../images/star-shift/icons/11-migu-ninety-thousand-fox-icon.png" alt="Migu · Ninety-Thousand Fox [Temporary]" />
-            <p class="creature-type">Type: 40,000 Years · Mount</p>
-          </div>
-
-          <div class="info-section">
-            <p class="info-label">Trade Info</p>
-            <div class="trade-line">
-              <span class="trade-pill">Auction</span>
-              <span class="trade-pill">Request</span>
-            </div>
-          </div>
-
-          <div class="info-section">
-            <p class="info-label">Special Attribute</p>
-            <p class="info-text">Self and Variant Parts: Bewitched Nine-Fury Fox Horn, Bewitched Nine-Fury Fox Head, Bewitched Nine-Fury Fox Tail, Bewitched Nine-Fury Fox Neck</p>
-          </div>
-        </article>
-
-        <article class="creature-card" data-parts="head neck tail">
-          <h2 class="creature-name">Sorrowful Fire Fox [Temporary]</h2>
-
-          <div class="creature-top">
-            <img class="creature-icon" src="../../images/star-shift/icons/12-chenxin-fire-fox-icon.png" alt="Chenxin · Fire Fox [Temporary]" />
-            <p class="creature-type">Type: 50,000 Years · Mount</p>
-          </div>
-
-          <div class="info-section">
-            <p class="info-label">Trade Info</p>
-            <div class="trade-line">
-              <span class="trade-pill">Auction</span>
-            </div>
-          </div>
-
-          <div class="info-section">
-            <p class="info-label">Special Attribute</p>
-            <p class="info-text">Self and Variant Parts: Fire Fox Head, Fire Fox Tail, Fire Fox Neck</p>
+            <p class="info-text">Self and Mutation Parts: Hermit Claw Crab Head, Hermit Claw Crab Back</p>
           </div>
         </article>
 
         <article class="creature-card" data-parts="head tail">
-          <h2 class="creature-name">Juvenile · Hill Fox [Temporary]</h2>
-
+          <h2 class="creature-name">100-Year · Surging Flame · Shrimp-Clam [Temporary]</h2>
           <div class="creature-top">
-            <img class="creature-icon" src="../../images/star-shift/icons/13-juvenile-hill-fox-icon.png" alt="Juvenile · Hill Fox [Temporary]" />
-            <p class="creature-type">Type: Juvenile · Mount</p>
+            <img class="creature-icon" src="../../images/grounded-prison/icons/02-100-year-surging-flame-shrimp-clam-icon.png" alt="100-Year · Surging Flame · Shrimp-Clam [Temporary]" />
+            <p class="creature-type">Type: 100-Year Mount</p>
           </div>
-
           <div class="info-section">
             <p class="info-label">Trade Info</p>
             <div class="trade-line">
-              <span class="trade-pill">Discard</span>
               <span class="trade-pill">Trade</span>
               <span class="trade-pill">Auction</span>
               <span class="trade-pill">Request</span>
             </div>
           </div>
-
           <div class="info-section">
             <p class="info-label">Special Attribute</p>
-            <p class="info-text">Self and Variant Parts: Hill Fox Head, Hill Fox Tail</p>
+            <p class="info-text">Self and Mutation Parts: Surging Flame · Shrimp-Clam Head, Surging Flame · Shrimp-Clam Tail</p>
+          </div>
+        </article>
+
+        <article class="creature-card" data-parts="left-arm right-arm">
+          <h2 class="creature-name">Lingzhan · General Crab [Temporary]</h2>
+          <div class="creature-top">
+            <img class="creature-icon" src="../../images/grounded-prison/icons/03-lingzhan-general-crab-icon.png" alt="Lingzhan · General Crab [Temporary]" />
+            <p class="creature-type">Type: 1,000-Year Mount</p>
+          </div>
+          <div class="info-section">
+            <p class="info-label">Trade Info</p>
+            <div class="trade-line">
+              <span class="trade-pill">Auction</span>
+              <span class="trade-pill">Request</span>
+            </div>
+          </div>
+          <div class="info-section">
+            <p class="info-label">Special Attribute</p>
+            <p class="info-text">Self and Mutation Parts: General Crab Left Arm, General Crab Right Arm</p>
+          </div>
+        </article>
+
+        <article class="creature-card" data-parts="head left-arm back right-arm">
+          <h2 class="creature-name">50-Year · Lingzhan · Hermit Claw Crab [Temporary]</h2>
+          <div class="creature-top">
+            <img class="creature-icon" src="../../images/grounded-prison/icons/04-50-year-lingzhan-hermit-claw-crab-icon.png" alt="50-Year · Lingzhan · Hermit Claw Crab [Temporary]" />
+            <p class="creature-type">Type: 50-Year Mount</p>
+          </div>
+          <div class="info-section">
+            <p class="info-label">Trade Info</p>
+            <div class="trade-line">
+              <span class="trade-pill">Trade</span>
+              <span class="trade-pill">Auction</span>
+              <span class="trade-pill">Request</span>
+            </div>
+          </div>
+          <div class="info-section">
+            <p class="info-label">Special Attribute</p>
+            <p class="info-text">Self and Mutation Parts: Lingzhan · Hermit Claw Crab Head, Lingzhan · Hermit Claw Crab Left Arm, Lingzhan · Hermit Claw Crab Back, Lingzhan · Hermit Claw Crab Right Arm</p>
+          </div>
+        </article>
+
+        <article class="creature-card" data-parts="head left-arm back right-arm">
+          <h2 class="creature-name">50-Year · Lingzhan · Hermit Claw Crab [Temporary]</h2>
+          <div class="creature-top">
+            <img class="creature-icon" src="../../images/grounded-prison/icons/05-50-year-lingzhan-hermit-claw-crab-alt-icon.png" alt="50-Year · Lingzhan · Hermit Claw Crab [Temporary]" />
+            <p class="creature-type">Type: 50-Year Mount</p>
+          </div>
+          <div class="info-section">
+            <p class="info-label">Trade Info</p>
+            <div class="trade-line">
+              <span class="trade-pill">Trade</span>
+              <span class="trade-pill">Auction</span>
+              <span class="trade-pill">Request</span>
+            </div>
+          </div>
+          <div class="info-section">
+            <p class="info-label">Special Attribute</p>
+            <p class="info-text">Self and Mutation Parts: Lingzhan · Hermit Claw Crab Head, Lingzhan · Hermit Claw Crab Left Arm, Lingzhan · Hermit Claw Crab Back, Lingzhan · Hermit Claw Crab Right Arm</p>
+          </div>
+        </article>
+
+        <article class="creature-card" data-parts="horn head wings tail">
+          <h2 class="creature-name">1,000-Year · Dragon Horse [Temporary]</h2>
+          <div class="creature-top">
+            <img class="creature-icon" src="../../images/grounded-prison/icons/06-1000-year-dragon-horse-icon.png" alt="1,000-Year · Dragon Horse [Temporary]" />
+            <p class="creature-type">Type: 1,000-Year Mount</p>
+          </div>
+          <div class="info-section">
+            <p class="info-label">Trade Info</p>
+            <div class="trade-line">
+              <span class="trade-pill">Auction</span>
+              <span class="trade-pill">Request</span>
+            </div>
+          </div>
+          <div class="info-section">
+            <p class="info-label">Special Attribute</p>
+            <p class="info-text">Self and Mutation Parts: Dragon Horse Horn, Dragon Horse Head, Dragon Horse Wings, Dragon Horse Tail</p>
+          </div>
+        </article>
+
+        <article class="creature-card" data-parts="head left-arm back right-arm">
+          <h2 class="creature-name">10,000-Year · Lingzhan · Hermit Claw Crab [Temporary]</h2>
+          <div class="creature-top">
+            <img class="creature-icon" src="../../images/grounded-prison/icons/07-10000-year-lingzhan-hermit-claw-crab-icon.png" alt="10,000-Year · Lingzhan · Hermit Claw Crab [Temporary]" />
+            <p class="creature-type">Type: 10,000-Year Mount</p>
+          </div>
+          <div class="info-section">
+            <p class="info-label">Trade Info</p>
+            <div class="trade-line">
+              <span class="trade-pill">Auction</span>
+              <span class="trade-pill">Request</span>
+            </div>
+          </div>
+          <div class="info-section">
+            <p class="info-label">Special Attribute</p>
+            <p class="info-text">Self and Mutation Parts: Lingzhan · Hermit Claw Crab Head, Lingzhan · Hermit Claw Crab Left Arm, Lingzhan · Hermit Claw Crab Back, Lingzhan · Hermit Claw Crab Right Arm</p>
+          </div>
+        </article>
+
+        <article class="creature-card" data-parts="left-arm right-arm">
+          <h2 class="creature-name">10,000-Year · Lingzhan · General Crab [Temporary]</h2>
+          <div class="creature-top">
+            <img class="creature-icon" src="../../images/grounded-prison/icons/08-10000-year-lingzhan-general-crab-icon.png" alt="10,000-Year · Lingzhan · General Crab [Temporary]" />
+            <p class="creature-type">Type: 13,000-Year Mount</p>
+          </div>
+          <div class="info-section">
+            <p class="info-label">Trade Info</p>
+            <div class="trade-line">
+              <span class="trade-pill">Auction</span>
+              <span class="trade-pill">Request</span>
+            </div>
+          </div>
+          <div class="info-section">
+            <p class="info-label">Special Attribute</p>
+            <p class="info-text">Self and Mutation Parts: General Crab Left Arm, General Crab Right Arm</p>
+          </div>
+        </article>
+
+
+        <article class="creature-card" data-parts="horn head wings tail">
+          <h2 class="creature-name">10,000-Year · Dragon Horse [Temporary]</h2>
+          <div class="creature-top">
+            <img class="creature-icon" src="../../images/grounded-prison/icons/13-10000-year-dragon-horse-icon.png" alt="10,000-Year · Dragon Horse [Temporary]" />
+            <p class="creature-type">Type: 10,000-Year Mount</p>
+          </div>
+          <div class="info-section">
+            <p class="info-label">Trade Info</p>
+            <div class="trade-line">
+              <span class="trade-pill">Auction</span>
+              <span class="trade-pill">Request</span>
+            </div>
+          </div>
+          <div class="info-section">
+            <p class="info-label">Special Attribute</p>
+            <p class="info-text">Self and Mutation Parts: Dragon Horse Horn, Dragon Horse Head, Dragon Horse Wings, Dragon Horse Tail</p>
+          </div>
+        </article>
+
+        <article class="creature-card" data-parts="head tail">
+          <h2 class="creature-name">40,000-Year · Surging Flame · Shrimp-Clam [Temporary]</h2>
+          <div class="creature-top">
+            <img class="creature-icon" src="../../images/grounded-prison/icons/09-40000-year-surging-flame-shrimp-clam-icon.png" alt="40,000-Year · Surging Flame · Shrimp-Clam [Temporary]" />
+            <p class="creature-type">Type: 40,000-Year Mount</p>
+          </div>
+          <div class="info-section">
+            <p class="info-label">Trade Info</p>
+            <div class="trade-line">
+              <span class="trade-pill">Auction</span>
+              <span class="trade-pill">Request</span>
+            </div>
+          </div>
+          <div class="info-section">
+            <p class="info-label">Special Attribute</p>
+            <p class="info-text">Self and Mutation Parts: Surging Flame · Shrimp-Clam Head, Surging Flame · Shrimp-Clam Tail</p>
+          </div>
+        </article>
+
+
+        <article class="creature-card" data-parts="left-arm right-arm">
+          <h2 class="creature-name">40,000-Year · Lingzhan · General Crab [Temporary]</h2>
+          <div class="creature-top">
+            <img class="creature-icon" src="../../images/grounded-prison/icons/10-40000-year-lingzhan-general-crab-icon.png" alt="40,000-Year · Lingzhan · General Crab [Temporary]" />
+            <p class="creature-type">Type: 40,000-Year Mount</p>
+          </div>
+          <div class="info-section">
+            <p class="info-label">Trade Info</p>
+            <div class="trade-line">
+              <span class="trade-pill">Auction</span>
+              <span class="trade-pill">Request</span>
+            </div>
+          </div>
+          <div class="info-section">
+            <p class="info-label">Special Attribute</p>
+            <p class="info-text">Self and Mutation Parts: General Crab Left Arm, General Crab Right Arm</p>
+          </div>
+        </article>
+
+
+        <article class="creature-card" data-parts="horn head wings tail">
+          <h2 class="creature-name">30,000-Year · Dragon Horse [Temporary]</h2>
+          <div class="creature-top">
+            <img class="creature-icon" src="../../images/grounded-prison/icons/11-30000-year-dragon-horse-icon.png" alt="30,000-Year · Dragon Horse [Temporary]" />
+            <p class="creature-type">Type: 30,000-Year Mount</p>
+          </div>
+          <div class="info-section">
+            <p class="info-label">Trade Info</p>
+            <div class="trade-line">
+              <span class="trade-pill">Auction</span>
+              <span class="trade-pill">Request</span>
+            </div>
+          </div>
+          <div class="info-section">
+            <p class="info-label">Special Attribute</p>
+            <p class="info-text">Self and Mutation Parts: Dragon Horse Horn, Dragon Horse Head, Dragon Horse Wings, Dragon Horse Tail</p>
+          </div>
+        </article>
+
+        <article class="creature-card" data-parts="horn head wings tail">
+          <h2 class="creature-name">50,000-Year · Dragon Horse [Temporary]</h2>
+          <div class="creature-top">
+            <img class="creature-icon" src="../../images/grounded-prison/icons/12-50000-year-dragon-horse-icon.png" alt="50,000-Year · Dragon Horse [Temporary]" />
+            <p class="creature-type">Type: 50,000-Year Mount</p>
+          </div>
+          <div class="info-section">
+            <p class="info-label">Trade Info</p>
+            <div class="trade-line">
+              <span class="trade-pill">Auction</span>
+            </div>
+          </div>
+          <div class="info-section">
+            <p class="info-label">Special Attribute</p>
+            <p class="info-text">Self and Mutation Parts: Dragon Horse Horn, Dragon Horse Head, Dragon Horse Wings, Dragon Horse Tail</p>
           </div>
         </article>
 
@@ -520,11 +483,6 @@
       cards.forEach(card => {
         const parts = (card.dataset.parts || "").split(" ").filter(Boolean);
 
-        /*
-          Multiple selected filters use OR logic:
-          Example: Horn + Wings shows cards that have Horn OR Wings.
-          None shows all cards.
-        */
         const shouldShow =
           activeFilters.length === 0 ||
           activeFilters.some(filter => parts.includes(filter));
@@ -562,6 +520,5 @@
 
     applyFilters();
   </script>
-
 </body>
 </html>
