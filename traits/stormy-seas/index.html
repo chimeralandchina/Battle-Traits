@@ -1,0 +1,626 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Stormy Seas | Battle Traits Reference</title>
+  <link rel="stylesheet" href="../../assets/css/styles.css" />
+
+  <style>
+    .stormy-seas-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 12px;
+    }
+
+    .creature-card {
+      padding: 12px;
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: 14px;
+      background: rgba(255, 255, 255, 0.045);
+      box-shadow: 0 12px 28px rgba(0, 0, 0, 0.16);
+    }
+
+    .creature-name {
+      margin-bottom: 10px;
+      color: #ffffff;
+      font-size: 15px;
+      font-weight: 900;
+      line-height: 1.25;
+    }
+
+    .creature-top {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 10px;
+    }
+
+    .creature-icon {
+      width: 72px;
+      height: 72px;
+      flex: 0 0 72px;
+      object-fit: cover;
+      border-radius: 10px;
+      border: 1px solid rgba(255, 255, 255, 0.14);
+      background: rgba(0, 0, 0, 0.18);
+    }
+
+    .creature-type {
+      color: rgba(242, 246, 255, 0.82);
+      font-size: 12.5px;
+      font-weight: 800;
+      line-height: 1.4;
+    }
+
+    .info-section {
+      padding: 9px 0;
+      border-top: 1px solid rgba(255, 255, 255, 0.09);
+    }
+
+    .info-label {
+      margin-bottom: 5px;
+      color: rgba(242, 246, 255, 0.58);
+      font-size: 12px;
+      font-weight: 900;
+      letter-spacing: 0.02em;
+    }
+
+    .info-text {
+      color: rgba(255, 255, 255, 0.9);
+      font-size: 12.5px;
+      font-weight: 700;
+      line-height: 1.45;
+    }
+
+    .trade-line {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      align-items: center;
+    }
+
+    .trade-pill {
+      display: inline-flex;
+      padding: 4px 8px;
+      border-radius: 999px;
+      color: rgba(255, 255, 255, 0.9);
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      font-size: 11.5px;
+      font-weight: 800;
+    }
+
+
+    .filter-area {
+      margin: 12px 0 16px;
+      padding: 10px;
+      border-radius: 14px;
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(255, 255, 255, 0.09);
+    }
+
+    .filter-label {
+      margin: 0 0 8px;
+      color: rgba(242, 246, 255, 0.68);
+      font-size: 12px;
+      font-weight: 900;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+
+    .filter-buttons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 7px;
+    }
+
+    .filter-btn {
+      cursor: pointer;
+      padding: 6px 10px;
+      border-radius: 999px;
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      background: rgba(255, 255, 255, 0.06);
+      color: rgba(255, 255, 255, 0.82);
+      font-size: 12px;
+      font-weight: 800;
+    }
+
+    .filter-btn.active {
+      background: rgba(255, 255, 255, 0.18);
+      color: #ffffff;
+      border-color: rgba(255, 255, 255, 0.28);
+    }
+
+    .hidden-card {
+      display: none !important;
+    }
+
+    .no-results-message {
+      display: none;
+      margin: 10px 0 0;
+      color: rgba(242, 246, 255, 0.7);
+      font-size: 12.5px;
+      font-weight: 700;
+    }
+
+    .no-results-message.show {
+      display: block;
+    }
+
+    @media (max-width: 560px) {
+      .stormy-seas-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .creature-icon {
+        width: 64px;
+        height: 64px;
+        flex-basis: 64px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <main class="page">
+    <a class="back-btn" href="../../index.html">← Back to all traits</a>
+
+    <section class="detail-panel">
+      <p class="detail-kicker">Trait Details</p>
+      <h1 class="detail-title">Stormy Seas</h1>
+
+      <div class="detail-description-box">
+        <strong>Variant Temporary Cards Containing [Stormy Seas].</strong><br />
+        <strong>Max-Level Effect:</strong> Activates at the start of battle. During this round, your Battle Beast damage bonus increases by <strong>22%</strong> (<strong>Power 714</strong>).
+      </div>
+
+      <div class="gallery-header">
+        <p class="gallery-title">Related Cards / Icons</p>
+        <p class="gallery-count"><span id="visible-count">18</span> items shown</p>
+      </div>
+
+      <div class="filter-area">
+        <p class="filter-label">Filters</p>
+        <div class="filter-buttons">
+          <button class="filter-btn active" type="button" data-filter="none">None</button>
+          <button class="filter-btn" type="button" data-filter="horn">Horn</button>
+          <button class="filter-btn" type="button" data-filter="head">Head</button>
+          <button class="filter-btn" type="button" data-filter="neck">Neck</button>
+          <button class="filter-btn" type="button" data-filter="left-arm">Left Arm</button>
+          <button class="filter-btn" type="button" data-filter="right-arm">Right Arm</button>
+          <button class="filter-btn" type="button" data-filter="tail">Tail</button>
+          <button class="filter-btn" type="button" data-filter="back">Back</button>
+          <button class="filter-btn" type="button" data-filter="wings">Wings</button>
+        </div>
+        <p class="no-results-message" id="no-results-message">No cards match this filter.</p>
+      </div>
+
+
+      <div class="stormy-seas-grid">
+
+        <article class="creature-card" data-parts="head">
+          <h2 class="creature-name">Gan Shen [Temporary]</h2>
+          <div class="creature-top">
+            <img class="creature-icon" src="../../images/stormy-seas/icons/01-gan-shen-icon.png" alt="Gan Shen [Temporary]" />
+            <p class="creature-type">Type: 300 Years · Mount</p>
+          </div>
+          <div class="info-section">
+            <p class="info-label">Trade Info</p>
+            <div class="trade-line">
+              <span class="trade-pill">Trade</span>
+              <span class="trade-pill">Auction</span>
+              <span class="trade-pill">Request</span>
+            </div>
+          </div>
+          <div class="info-section">
+            <p class="info-label">Special Attribute</p>
+            <p class="info-text">Self and Variant Parts: Gan Shen Head</p>
+          </div>
+        </article>
+
+        <article class="creature-card" data-parts="head">
+          <h2 class="creature-name">Gan Ding [Temporary]</h2>
+          <div class="creature-top">
+            <img class="creature-icon" src="../../images/stormy-seas/icons/02-gan-ding-icon.png" alt="Gan Ding [Temporary]" />
+            <p class="creature-type">Type: 50 Years · Mount</p>
+          </div>
+          <div class="info-section">
+            <p class="info-label">Trade Info</p>
+            <div class="trade-line">
+              <span class="trade-pill">Trade</span>
+              <span class="trade-pill">Auction</span>
+              <span class="trade-pill">Request</span>
+            </div>
+          </div>
+          <div class="info-section">
+            <p class="info-label">Special Attribute</p>
+            <p class="info-text">Self and Variant Parts: Gan Ding Head</p>
+          </div>
+        </article>
+
+        <article class="creature-card" data-parts="head">
+          <h2 class="creature-name">Gan Fu [Temporary]</h2>
+          <div class="creature-top">
+            <img class="creature-icon" src="../../images/stormy-seas/icons/03-gan-fu-icon.png" alt="Gan Fu [Temporary]" />
+            <p class="creature-type">Type: 50 Years · Mount</p>
+          </div>
+          <div class="info-section">
+            <p class="info-label">Trade Info</p>
+            <div class="trade-line">
+              <span class="trade-pill">Trade</span>
+              <span class="trade-pill">Auction</span>
+              <span class="trade-pill">Request</span>
+            </div>
+          </div>
+          <div class="info-section">
+            <p class="info-label">Special Attribute</p>
+            <p class="info-text">Self and Variant Parts: Gan Fu Head</p>
+          </div>
+        </article>
+
+        <article class="creature-card" data-parts="head">
+          <h2 class="creature-name">Gan Tong [Temporary]</h2>
+          <div class="creature-top">
+            <img class="creature-icon" src="../../images/stormy-seas/icons/04-gan-tong-icon.png" alt="Gan Tong [Temporary]" />
+            <p class="creature-type">Type: 50 Years · Mount</p>
+          </div>
+          <div class="info-section">
+            <p class="info-label">Trade Info</p>
+            <div class="trade-line">
+              <span class="trade-pill">Trade</span>
+              <span class="trade-pill">Auction</span>
+              <span class="trade-pill">Request</span>
+            </div>
+          </div>
+          <div class="info-section">
+            <p class="info-label">Special Attribute</p>
+            <p class="info-text">Self and Variant Parts: Gan Tong Head</p>
+          </div>
+        </article>
+
+        <article class="creature-card" data-parts="head">
+          <h2 class="creature-name">Gan Ling [Temporary]</h2>
+          <div class="creature-top">
+            <img class="creature-icon" src="../../images/stormy-seas/icons/05-gan-ling-icon.png" alt="Gan Ling [Temporary]" />
+            <p class="creature-type">Type: 100 Years · Mount</p>
+          </div>
+          <div class="info-section">
+            <p class="info-label">Trade Info</p>
+            <div class="trade-line">
+              <span class="trade-pill">Trade</span>
+              <span class="trade-pill">Auction</span>
+              <span class="trade-pill">Request</span>
+            </div>
+          </div>
+          <div class="info-section">
+            <p class="info-label">Special Attribute</p>
+            <p class="info-text">Self and Variant Parts: Gan Ling Head</p>
+          </div>
+        </article>
+
+        <article class="creature-card" data-parts="head">
+          <h2 class="creature-name">Gan Li [Temporary]</h2>
+          <div class="creature-top">
+            <img class="creature-icon" src="../../images/stormy-seas/icons/06-gan-li-icon.png" alt="Gan Li [Temporary]" />
+            <p class="creature-type">Type: 50 Years · Mount</p>
+          </div>
+          <div class="info-section">
+            <p class="info-label">Trade Info</p>
+            <div class="trade-line">
+              <span class="trade-pill">Trade</span>
+              <span class="trade-pill">Auction</span>
+              <span class="trade-pill">Request</span>
+            </div>
+          </div>
+          <div class="info-section">
+            <p class="info-label">Special Attribute</p>
+            <p class="info-text">Self and Variant Parts: Gan Li Head</p>
+          </div>
+        </article>
+
+        <article class="creature-card" data-parts="head">
+          <h2 class="creature-name">Gan Hua [Temporary]</h2>
+          <div class="creature-top">
+            <img class="creature-icon" src="../../images/stormy-seas/icons/07-gan-hua-icon.png" alt="Gan Hua [Temporary]" />
+            <p class="creature-type">Type: 50 Years · Mount</p>
+          </div>
+          <div class="info-section">
+            <p class="info-label">Trade Info</p>
+            <div class="trade-line">
+              <span class="trade-pill">Trade</span>
+              <span class="trade-pill">Auction</span>
+              <span class="trade-pill">Request</span>
+            </div>
+          </div>
+          <div class="info-section">
+            <p class="info-label">Special Attribute</p>
+            <p class="info-text">Self and Variant Parts: Gan Hua Head</p>
+          </div>
+        </article>
+
+        <article class="creature-card" data-parts="head">
+          <h2 class="creature-name">1,000 Years · Chongyan · Luozhu Jellyfish [Temporary]</h2>
+          <div class="creature-top">
+            <img class="creature-icon" src="../../images/stormy-seas/icons/08-1000-years-chongyan-luozhu-jellyfish-icon.png" alt="1,000 Years · Chongyan · Luozhu Jellyfish [Temporary]" />
+            <p class="creature-type">Type: 1,000 Years · Mount</p>
+          </div>
+          <div class="info-section">
+            <p class="info-label">Trade Info</p>
+            <div class="trade-line">
+              <span class="trade-pill">Auction</span>
+              <span class="trade-pill">Request</span>
+            </div>
+          </div>
+          <div class="info-section">
+            <p class="info-label">Special Attribute</p>
+            <p class="info-text">Self and Variant Parts: Chongyan · Luozhu Jellyfish Head</p>
+          </div>
+        </article>
+
+        <article class="creature-card" data-parts="horn head tail back wings">
+          <h2 class="creature-name">Chongyan · Burning-Wing Ghostfish [Temporary]</h2>
+          <div class="creature-top">
+            <img class="creature-icon" src="../../images/stormy-seas/icons/09-chongyan-burning-wing-ghostfish-icon.png" alt="Chongyan · Burning-Wing Ghostfish [Temporary]" />
+            <p class="creature-type">Type: Mount</p>
+          </div>
+          <div class="info-section">
+            <p class="info-label">Trade Info</p>
+            <div class="trade-line">
+              <span class="trade-pill">Discard</span>
+              <span class="trade-pill">Trade</span>
+              <span class="trade-pill">Auction</span>
+              <span class="trade-pill">Request</span>
+            </div>
+          </div>
+          <div class="info-section">
+            <p class="info-label">Special Attribute</p>
+            <p class="info-text">Self and Variant Parts: Chongyan · Burning-Wing Ghostfish Horn, Chongyan · Burning-Wing Ghostfish Head, Chongyan · Burning-Wing Ghostfish Wing, Chongyan · Burning-Wing Ghostfish Tail, Chongyan · Burning-Wing Ghostfish Back</p>
+          </div>
+        </article>
+
+        <article class="creature-card" data-parts="horn head tail wings">
+          <h2 class="creature-name">1,000 Years · Chongyan · Kun Kun [Temporary]</h2>
+          <div class="creature-top">
+            <img class="creature-icon" src="../../images/stormy-seas/icons/10-1000-years-chongyan-kun-kun-icon.png" alt="1,000 Years · Chongyan · Kun Kun [Temporary]" />
+            <p class="creature-type">Type: 5,000 Years · Mount</p>
+          </div>
+          <div class="info-section">
+            <p class="info-label">Trade Info</p>
+            <div class="trade-line">
+              <span class="trade-pill">Auction</span>
+              <span class="trade-pill">Request</span>
+            </div>
+          </div>
+          <div class="info-section">
+            <p class="info-label">Special Attribute</p>
+            <p class="info-text">Self and Variant Parts: Chongyan · Kun Kun Horn, Chongyan · Kun Kun Head, Chongyan · Kun Kun Wing I, Chongyan · Kun Kun Tail, Chongyan · Kun Kun Wing II, Chongyan · Kun Kun Wing III</p>
+          </div>
+        </article>
+
+        <article class="creature-card" data-parts="horn head tail back wings">
+          <h2 class="creature-name">100 Years · Chongyan · Burning-Wing Ghostfish [Temporary]</h2>
+          <div class="creature-top">
+            <img class="creature-icon" src="../../images/stormy-seas/icons/11-100-years-chongyan-burning-wing-ghostfish-icon.png" alt="100 Years · Chongyan · Burning-Wing Ghostfish [Temporary]" />
+            <p class="creature-type">Type: 800 Years · Mount</p>
+          </div>
+          <div class="info-section">
+            <p class="info-label">Trade Info</p>
+            <div class="trade-line">
+              <span class="trade-pill">Trade</span>
+              <span class="trade-pill">Auction</span>
+              <span class="trade-pill">Request</span>
+            </div>
+          </div>
+          <div class="info-section">
+            <p class="info-label">Special Attribute</p>
+            <p class="info-text">Self and Variant Parts: Chongyan · Burning-Wing Ghostfish Horn, Chongyan · Burning-Wing Ghostfish Head, Chongyan · Burning-Wing Ghostfish Wing, Chongyan · Burning-Wing Ghostfish Tail, Chongyan · Burning-Wing Ghostfish Back</p>
+          </div>
+        </article>
+
+        <article class="creature-card" data-parts="horn head tail back wings">
+          <h2 class="creature-name">1,000 Years · Chongyan · Burning-Wing Ghostfish [Temporary]</h2>
+          <div class="creature-top">
+            <img class="creature-icon" src="../../images/stormy-seas/icons/12-1000-years-chongyan-burning-wing-ghostfish-icon.png" alt="1,000 Years · Chongyan · Burning-Wing Ghostfish [Temporary]" />
+            <p class="creature-type">Type: 8,000 Years · Mount</p>
+          </div>
+          <div class="info-section">
+            <p class="info-label">Trade Info</p>
+            <div class="trade-line">
+              <span class="trade-pill">Auction</span>
+              <span class="trade-pill">Request</span>
+            </div>
+          </div>
+          <div class="info-section">
+            <p class="info-label">Special Attribute</p>
+            <p class="info-text">Self and Variant Parts: Chongyan · Burning-Wing Ghostfish Horn, Chongyan · Burning-Wing Ghostfish Head, Chongyan · Burning-Wing Ghostfish Wing, Chongyan · Burning-Wing Ghostfish Tail, Chongyan · Burning-Wing Ghostfish Back</p>
+          </div>
+        </article>
+
+        <article class="creature-card" data-parts="head neck tail wings">
+          <h2 class="creature-name">1,000 Years · Golden Crow [Temporary]</h2>
+          <div class="creature-top">
+            <img class="creature-icon" src="../../images/stormy-seas/icons/13-1000-years-golden-crow-icon.png" alt="1,000 Years · Golden Crow [Temporary]" />
+            <p class="creature-type">Type: 1,000 Years · Mount</p>
+          </div>
+          <div class="info-section">
+            <p class="info-label">Trade Info</p>
+            <div class="trade-line">
+              <span class="trade-pill">Auction</span>
+              <span class="trade-pill">Request</span>
+            </div>
+          </div>
+          <div class="info-section">
+            <p class="info-label">Special Attribute</p>
+            <p class="info-text">Self and Variant Parts: Golden Crow Head, Golden Crow Wings, Golden Crow Tail, Golden Crow Neck</p>
+          </div>
+        </article>
+
+        <article class="creature-card" data-parts="horn head tail back wings">
+          <h2 class="creature-name">30,000 Years · Chongyan · Burning-Wing Ghostfish [Temporary]</h2>
+          <div class="creature-top">
+            <img class="creature-icon" src="../../images/stormy-seas/icons/14-30000-years-chongyan-burning-wing-ghostfish-icon.png" alt="30,000 Years · Chongyan · Burning-Wing Ghostfish [Temporary]" />
+            <p class="creature-type">Type: 30,000 Years · Mount</p>
+          </div>
+          <div class="info-section">
+            <p class="info-label">Trade Info</p>
+            <div class="trade-line">
+              <span class="trade-pill">Auction</span>
+              <span class="trade-pill">Request</span>
+            </div>
+          </div>
+          <div class="info-section">
+            <p class="info-label">Special Attribute</p>
+            <p class="info-text">Self and Variant Parts: Chongyan · Burning-Wing Ghostfish Horn, Chongyan · Burning-Wing Ghostfish Head, Chongyan · Burning-Wing Ghostfish Wing, Chongyan · Burning-Wing Ghostfish Tail, Chongyan · Burning-Wing Ghostfish Back</p>
+          </div>
+        </article>
+
+        <article class="creature-card" data-parts="horn head tail wings">
+          <h2 class="creature-name">30,000 Years · Chongyan · Kun Kun [Temporary]</h2>
+          <div class="creature-top">
+            <img class="creature-icon" src="../../images/stormy-seas/icons/15-30000-years-chongyan-kun-kun-icon.png" alt="30,000 Years · Chongyan · Kun Kun [Temporary]" />
+            <p class="creature-type">Type: 30,000 Years · Mount</p>
+          </div>
+          <div class="info-section">
+            <p class="info-label">Trade Info</p>
+            <div class="trade-line">
+              <span class="trade-pill">Auction</span>
+              <span class="trade-pill">Request</span>
+            </div>
+          </div>
+          <div class="info-section">
+            <p class="info-label">Special Attribute</p>
+            <p class="info-text">Self and Variant Parts: Chongyan · Kun Kun Horn, Chongyan · Kun Kun Head, Chongyan · Kun Kun Wing I, Chongyan · Kun Kun Tail, Chongyan · Kun Kun Wing II, Chongyan · Kun Kun Wing III</p>
+          </div>
+        </article>
+
+        <article class="creature-card" data-parts="head neck tail wings">
+          <h2 class="creature-name">30,000 Years · Golden Crow [Temporary]</h2>
+          <div class="creature-top">
+            <img class="creature-icon" src="../../images/stormy-seas/icons/16-30000-years-golden-crow-icon.png" alt="30,000 Years · Golden Crow [Temporary]" />
+            <p class="creature-type">Type: 30,000 Years · Mount</p>
+          </div>
+          <div class="info-section">
+            <p class="info-label">Trade Info</p>
+            <div class="trade-line">
+              <span class="trade-pill">Auction</span>
+              <span class="trade-pill">Request</span>
+            </div>
+          </div>
+          <div class="info-section">
+            <p class="info-label">Special Attribute</p>
+            <p class="info-text">Self and Variant Parts: Golden Crow Neck, Golden Crow Head, Golden Crow Wings, Golden Crow Tail</p>
+          </div>
+        </article>
+
+        <article class="creature-card" data-parts="head">
+          <h2 class="creature-name">50,000 Years · Chongyan · Luozhu Jellyfish [Temporary]</h2>
+          <div class="creature-top">
+            <img class="creature-icon" src="../../images/stormy-seas/icons/17-50000-years-chongyan-luozhu-jellyfish-icon.png" alt="50,000 Years · Chongyan · Luozhu Jellyfish [Temporary]" />
+            <p class="creature-type">Type: 50,000 Years · Mount</p>
+          </div>
+          <div class="info-section">
+            <p class="info-label">Trade Info</p>
+            <div class="trade-line">
+              <span class="trade-pill">Auction</span>
+            </div>
+          </div>
+          <div class="info-section">
+            <p class="info-label">Special Attribute</p>
+            <p class="info-text">Self and Variant Parts: Chongyan · Luozhu Jellyfish Head</p>
+          </div>
+        </article>
+
+        <article class="creature-card" data-parts="head neck tail wings">
+          <h2 class="creature-name">50,000 Years · Golden Crow [Temporary]</h2>
+          <div class="creature-top">
+            <img class="creature-icon" src="../../images/stormy-seas/icons/18-50000-years-golden-crow-icon.png" alt="50,000 Years · Golden Crow [Temporary]" />
+            <p class="creature-type">Type: 50,000 Years · Mount</p>
+          </div>
+          <div class="info-section">
+            <p class="info-label">Trade Info</p>
+            <div class="trade-line">
+              <span class="trade-pill">Auction</span>
+            </div>
+          </div>
+          <div class="info-section">
+            <p class="info-label">Special Attribute</p>
+            <p class="info-text">Self and Variant Parts: Golden Crow Neck, Golden Crow Head, Golden Crow Wings, Golden Crow Tail</p>
+          </div>
+        </article>
+
+      </div>
+    </section>
+  </main>
+
+  <script>
+    const filterButtons = document.querySelectorAll(".filter-btn");
+    const cards = document.querySelectorAll(".creature-card");
+    const visibleCount = document.getElementById("visible-count");
+    const noResultsMessage = document.getElementById("no-results-message");
+
+    function getActivePartFilters() {
+      return [...filterButtons]
+        .filter(button => button.classList.contains("active") && button.dataset.filter !== "none")
+        .map(button => button.dataset.filter);
+    }
+
+    function updateCount() {
+      const visibleCards = document.querySelectorAll(".creature-card:not(.hidden-card)");
+      if (visibleCount) visibleCount.textContent = visibleCards.length;
+      if (noResultsMessage) {
+        noResultsMessage.classList.toggle("show", visibleCards.length === 0);
+      }
+    }
+
+    function applyFilters() {
+      const activeFilters = getActivePartFilters();
+
+      cards.forEach(card => {
+        const parts = (card.dataset.parts || "").split(" ").filter(Boolean);
+
+        /*
+          Multiple selected filters use OR logic:
+          Example: Horn + Wings shows cards that have Horn OR Wings.
+          None shows all cards.
+        */
+        const shouldShow =
+          activeFilters.length === 0 ||
+          activeFilters.some(filter => parts.includes(filter));
+
+        card.classList.toggle("hidden-card", !shouldShow);
+      });
+
+      updateCount();
+    }
+
+    filterButtons.forEach(button => {
+      button.addEventListener("click", () => {
+        const selectedFilter = button.dataset.filter;
+        const noneButton = document.querySelector('.filter-btn[data-filter="none"]');
+
+        if (selectedFilter === "none") {
+          filterButtons.forEach(btn => btn.classList.remove("active"));
+          button.classList.add("active");
+          applyFilters();
+          return;
+        }
+
+        if (noneButton) noneButton.classList.remove("active");
+        button.classList.toggle("active");
+
+        const activeFilters = getActivePartFilters();
+
+        if (activeFilters.length === 0 && noneButton) {
+          noneButton.classList.add("active");
+        }
+
+        applyFilters();
+      });
+    });
+
+    applyFilters();
+  </script>
+
+</body>
+</html>

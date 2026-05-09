@@ -1,0 +1,917 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Indestructible | Battle Traits Reference</title>
+  <link rel="stylesheet" href="../../assets/css/styles.css" />
+
+  <style>
+    .indestructible-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 12px;
+    }
+
+    .creature-card {
+      padding: 12px;
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: 14px;
+      background: rgba(255, 255, 255, 0.045);
+      box-shadow: 0 12px 28px rgba(0, 0, 0, 0.16);
+    }
+
+    .creature-name {
+      margin-bottom: 10px;
+      color: #ffffff;
+      font-size: 15px;
+      font-weight: 900;
+      line-height: 1.25;
+    }
+
+    .creature-top {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 10px;
+    }
+
+    .creature-icon {
+      width: 72px;
+      height: 72px;
+      flex: 0 0 72px;
+      object-fit: cover;
+      border-radius: 10px;
+      border: 1px solid rgba(255, 255, 255, 0.14);
+      background: rgba(0, 0, 0, 0.18);
+    }
+
+    .creature-type {
+      color: rgba(242, 246, 255, 0.82);
+      font-size: 12.5px;
+      font-weight: 800;
+      line-height: 1.4;
+    }
+
+    .info-section {
+      padding: 9px 0;
+      border-top: 1px solid rgba(255, 255, 255, 0.09);
+    }
+
+    .info-label {
+      margin-bottom: 5px;
+      color: rgba(242, 246, 255, 0.58);
+      font-size: 12px;
+      font-weight: 900;
+      letter-spacing: 0.02em;
+    }
+
+    .info-text {
+      color: rgba(255, 255, 255, 0.9);
+      font-size: 12.5px;
+      font-weight: 700;
+      line-height: 1.45;
+    }
+
+    .trade-line {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      align-items: center;
+    }
+
+    .trade-pill {
+      display: inline-flex;
+      padding: 4px 8px;
+      border-radius: 999px;
+      color: rgba(255, 255, 255, 0.9);
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      font-size: 11.5px;
+      font-weight: 800;
+    }
+
+
+    .filter-area {
+      margin: 12px 0 16px;
+      padding: 10px;
+      border-radius: 14px;
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(255, 255, 255, 0.09);
+    }
+
+    .filter-label {
+      margin: 0 0 8px;
+      color: rgba(242, 246, 255, 0.68);
+      font-size: 12px;
+      font-weight: 900;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+
+    .filter-buttons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 7px;
+    }
+
+    .filter-btn {
+      cursor: pointer;
+      padding: 6px 10px;
+      border-radius: 999px;
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      background: rgba(255, 255, 255, 0.06);
+      color: rgba(255, 255, 255, 0.82);
+      font-size: 12px;
+      font-weight: 800;
+    }
+
+    .filter-btn.active {
+      background: rgba(255, 255, 255, 0.18);
+      color: #ffffff;
+      border-color: rgba(255, 255, 255, 0.28);
+    }
+
+    .hidden-card {
+      display: none !important;
+    }
+
+    .no-results-message {
+      display: none;
+      margin: 10px 0 0;
+      color: rgba(242, 246, 255, 0.7);
+      font-size: 12.5px;
+      font-weight: 700;
+    }
+
+    .no-results-message.show {
+      display: block;
+    }
+
+    @media (max-width: 560px) {
+      .indestructible-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .creature-icon {
+        width: 64px;
+        height: 64px;
+        flex-basis: 64px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <main class="page">
+    <a class="back-btn" href="../../index.html">← Back to all traits</a>
+
+    <section class="detail-panel">
+      <p class="detail-kicker">Trait Details</p>
+      <h1 class="detail-title">Indestructible</h1>
+
+      <div class="detail-description-box">
+        <strong>Variant Temporary Cards Containing [Indestructible].</strong><br />
+        <strong>Max-Level Effect:</strong> Activates at the start of battle. During this round, your Defense increases by <strong>41%</strong> (<strong>Power 626</strong>).
+      </div>
+
+      <div class="gallery-header">
+        <p class="gallery-title">Related Cards / Icons</p>
+        <p class="gallery-count"><span id="visible-count">33</span> items shown</p>
+      </div>
+
+      <div class="filter-area">
+        <p class="filter-label">Filters</p>
+        <div class="filter-buttons">
+          <button class="filter-btn active" type="button" data-filter="none">None</button>
+          <button class="filter-btn" type="button" data-filter="horn">Horn</button>
+          <button class="filter-btn" type="button" data-filter="head">Head</button>
+          <button class="filter-btn" type="button" data-filter="neck">Neck</button>
+          <button class="filter-btn" type="button" data-filter="left-arm">Left Arm</button>
+          <button class="filter-btn" type="button" data-filter="right-arm">Right Arm</button>
+          <button class="filter-btn" type="button" data-filter="tail">Tail</button>
+          <button class="filter-btn" type="button" data-filter="back">Back</button>
+          <button class="filter-btn" type="button" data-filter="wings">Wings</button>
+        </div>
+        <p class="no-results-message" id="no-results-message">No cards match this filter.</p>
+      </div>
+
+
+      <div class="indestructible-grid">
+
+        <article class="creature-card" data-parts="horn head neck tail">
+          <h2 class="creature-name">Lümi [Temporary]</h2>
+          <div class="creature-top">
+            <img class="creature-icon" src="../../images/indestructible/icons/01-lumi-icon.png" alt="Lümi [Temporary]" />
+            <p class="creature-type">Type: Mount</p>
+          </div>
+          <div class="info-section">
+            <p class="info-label">Trade Info</p>
+            <div class="trade-line">
+              <span class="trade-pill">Discard</span>
+              <span class="trade-pill">Trade</span>
+              <span class="trade-pill">Auction</span>
+              <span class="trade-pill">Request</span>
+            </div>
+          </div>
+          <div class="info-section">
+            <p class="info-label">Special Attribute</p>
+            <p class="info-text">Self and Variant Parts: Lümi Horn, Lümi Head, Lümi Tail, Lümi Neck</p>
+          </div>
+        </article>
+
+        <article class="creature-card" data-parts="horn head neck tail">
+          <h2 class="creature-name">Lotus White · Lümi [Temporary]</h2>
+          <div class="creature-top">
+            <img class="creature-icon" src="../../images/indestructible/icons/02-lotus-white-lumi-icon.png" alt="Lotus White · Lümi [Temporary]" />
+            <p class="creature-type">Type: Mount</p>
+          </div>
+          <div class="info-section">
+            <p class="info-label">Trade Info</p>
+            <div class="trade-line">
+              <span class="trade-pill">Discard</span>
+              <span class="trade-pill">Trade</span>
+              <span class="trade-pill">Auction</span>
+              <span class="trade-pill">Request</span>
+            </div>
+          </div>
+          <div class="info-section">
+            <p class="info-label">Special Attribute</p>
+            <p class="info-text">Self and Variant Parts: Lotus White · Lümi Horn, Lotus White · Lümi Head, Lotus White · Lümi Tail, Lotus White · Lümi Neck</p>
+          </div>
+        </article>
+
+        <article class="creature-card" data-parts="horn head neck tail">
+          <h2 class="creature-name">Dark Crystal · Lümi [Temporary]</h2>
+          <div class="creature-top">
+            <img class="creature-icon" src="../../images/indestructible/icons/03-dark-crystal-lumi-icon.png" alt="Dark Crystal · Lümi [Temporary]" />
+            <p class="creature-type">Type: Mount</p>
+          </div>
+          <div class="info-section">
+            <p class="info-label">Trade Info</p>
+            <div class="trade-line">
+              <span class="trade-pill">Discard</span>
+              <span class="trade-pill">Trade</span>
+              <span class="trade-pill">Auction</span>
+              <span class="trade-pill">Request</span>
+            </div>
+          </div>
+          <div class="info-section">
+            <p class="info-label">Special Attribute</p>
+            <p class="info-text">Self and Variant Parts: Dark Crystal · Lümi Horn, Dark Crystal · Lümi Head, Dark Crystal · Lümi Tail, Dark Crystal · Lümi Neck</p>
+          </div>
+        </article>
+
+        <article class="creature-card" data-parts="horn head neck tail">
+          <h2 class="creature-name">Brown-Gold · Lümi [Temporary]</h2>
+          <div class="creature-top">
+            <img class="creature-icon" src="../../images/indestructible/icons/04-brown-gold-lumi-icon.png" alt="Brown-Gold · Lümi [Temporary]" />
+            <p class="creature-type">Type: Mount</p>
+          </div>
+          <div class="info-section">
+            <p class="info-label">Trade Info</p>
+            <div class="trade-line">
+              <span class="trade-pill">Discard</span>
+              <span class="trade-pill">Trade</span>
+              <span class="trade-pill">Auction</span>
+              <span class="trade-pill">Request</span>
+            </div>
+          </div>
+          <div class="info-section">
+            <p class="info-label">Special Attribute</p>
+            <p class="info-text">Self and Variant Parts: Brown-Gold · Lümi Horn, Brown-Gold · Lümi Head, Brown-Gold · Lümi Tail, Brown-Gold · Lümi Neck</p>
+          </div>
+        </article>
+
+        <article class="creature-card" data-parts="horn head neck tail">
+          <h2 class="creature-name">Radiant Deer [Temporary]</h2>
+          <div class="creature-top">
+            <img class="creature-icon" src="../../images/indestructible/icons/05-radiant-deer-icon.png" alt="Radiant Deer [Temporary]" />
+            <p class="creature-type">Type: 500 Years · Mount</p>
+          </div>
+          <div class="info-section">
+            <p class="info-label">Trade Info</p>
+            <div class="trade-line">
+              <span class="trade-pill">Trade</span>
+              <span class="trade-pill">Auction</span>
+              <span class="trade-pill">Request</span>
+            </div>
+          </div>
+          <div class="info-section">
+            <p class="info-label">Special Attribute</p>
+            <p class="info-text">Self and Variant Parts: Radiant Deer Horn, Radiant Deer Head, Radiant Deer Tail, Radiant Deer Neck</p>
+          </div>
+        </article>
+
+        <article class="creature-card" data-parts="horn head tail">
+          <h2 class="creature-name">Frost Deer [Temporary]</h2>
+          <div class="creature-top">
+            <img class="creature-icon" src="../../images/indestructible/icons/06-frost-deer-icon.png" alt="Frost Deer [Temporary]" />
+            <p class="creature-type">Type: 3,000 Years · Mount</p>
+          </div>
+          <div class="info-section">
+            <p class="info-label">Trade Info</p>
+            <div class="trade-line">
+              <span class="trade-pill">Auction</span>
+              <span class="trade-pill">Request</span>
+            </div>
+          </div>
+          <div class="info-section">
+            <p class="info-label">Special Attribute</p>
+            <p class="info-text">Self and Variant Parts: Frost Deer Horn, Frost Deer Head, Frost Deer Tail</p>
+          </div>
+        </article>
+
+        <article class="creature-card" data-parts="horn head neck tail">
+          <h2 class="creature-name">Bo Deer [Temporary]</h2>
+          <div class="creature-top">
+            <img class="creature-icon" src="../../images/indestructible/icons/07-bo-deer-icon.png" alt="Bo Deer [Temporary]" />
+            <p class="creature-type">Type: 800 Years · Mount</p>
+          </div>
+          <div class="info-section">
+            <p class="info-label">Trade Info</p>
+            <div class="trade-line">
+              <span class="trade-pill">Trade</span>
+              <span class="trade-pill">Auction</span>
+              <span class="trade-pill">Request</span>
+            </div>
+          </div>
+          <div class="info-section">
+            <p class="info-label">Special Attribute</p>
+            <p class="info-text">Self and Variant Parts: Bo Deer Horn, Bo Deer Head, Bo Deer Tail, Bo Deer Neck</p>
+          </div>
+        </article>
+
+        <article class="creature-card" data-parts="horn head neck tail">
+          <h2 class="creature-name">Moose [Temporary]</h2>
+          <div class="creature-top">
+            <img class="creature-icon" src="../../images/indestructible/icons/08-moose-icon.png" alt="Moose [Temporary]" />
+            <p class="creature-type">Type: 500 Years · Mount</p>
+          </div>
+          <div class="info-section">
+            <p class="info-label">Trade Info</p>
+            <div class="trade-line">
+              <span class="trade-pill">Trade</span>
+              <span class="trade-pill">Auction</span>
+              <span class="trade-pill">Request</span>
+            </div>
+          </div>
+          <div class="info-section">
+            <p class="info-label">Special Attribute</p>
+            <p class="info-text">Self and Variant Parts: Moose Horn, Moose Head, Moose Tail, Moose Neck</p>
+          </div>
+        </article>
+
+        <article class="creature-card" data-parts="horn head left-arm right-arm">
+          <h2 class="creature-name">100 Years · Chongyan · Wujian [Temporary]</h2>
+          <div class="creature-top">
+            <img class="creature-icon" src="../../images/indestructible/icons/09-100-years-chongyan-wujian-icon.png" alt="100 Years · Chongyan · Wujian [Temporary]" />
+            <p class="creature-type">Type: 500 Years · Mount</p>
+          </div>
+          <div class="info-section">
+            <p class="info-label">Trade Info</p>
+            <div class="trade-line">
+              <span class="trade-pill">Trade</span>
+              <span class="trade-pill">Auction</span>
+              <span class="trade-pill">Request</span>
+            </div>
+          </div>
+          <div class="info-section">
+            <p class="info-label">Special Attribute</p>
+            <p class="info-text">Self and Variant Parts: Chongyan · Wujian Horn, Chongyan · Wujian Head, Chongyan · Wujian Left Arm, Chongyan · Wujian Right Arm</p>
+          </div>
+        </article>
+
+        <article class="creature-card" data-parts="horn head tail back">
+          <h2 class="creature-name">100 Years · Lingshuo · Rust Wolf [Temporary]</h2>
+          <div class="creature-top">
+            <img class="creature-icon" src="../../images/indestructible/icons/10-100-years-lingshuo-rust-wolf-icon.png" alt="100 Years · Lingshuo · Rust Wolf [Temporary]" />
+            <p class="creature-type">Type: 100 Years · Mount</p>
+          </div>
+          <div class="info-section">
+            <p class="info-label">Trade Info</p>
+            <div class="trade-line">
+              <span class="trade-pill">Trade</span>
+              <span class="trade-pill">Auction</span>
+              <span class="trade-pill">Request</span>
+            </div>
+          </div>
+          <div class="info-section">
+            <p class="info-label">Special Attribute</p>
+            <p class="info-text">Self and Variant Parts: Lingshuo · Rust Wolf Horn, Lingshuo · Rust Wolf Head, Lingshuo · Rust Wolf Tail, Lingshuo · Rust Wolf Back</p>
+          </div>
+        </article>
+
+        <article class="creature-card" data-parts="horn head back wings">
+          <h2 class="creature-name">100 Years · Mangcang · Pod Silkworm [Temporary]</h2>
+          <div class="creature-top">
+            <img class="creature-icon" src="../../images/indestructible/icons/11-100-years-mangcang-pod-silkworm-icon.png" alt="100 Years · Mangcang · Pod Silkworm [Temporary]" />
+            <p class="creature-type">Type: 500 Years · Mount</p>
+          </div>
+          <div class="info-section">
+            <p class="info-label">Trade Info</p>
+            <div class="trade-line">
+              <span class="trade-pill">Trade</span>
+              <span class="trade-pill">Auction</span>
+              <span class="trade-pill">Request</span>
+            </div>
+          </div>
+          <div class="info-section">
+            <p class="info-label">Special Attribute</p>
+            <p class="info-text">Self and Variant Parts: Mangcang · Pod Silkworm Horn, Mangcang · Pod Silkworm Head, Mangcang · Pod Silkworm Wing, Mangcang · Pod Silkworm Back</p>
+          </div>
+        </article>
+
+        <article class="creature-card" data-parts="head tail">
+          <h2 class="creature-name">100 Years · Sata · Iron Dragon [Temporary]</h2>
+          <div class="creature-top">
+            <img class="creature-icon" src="../../images/indestructible/icons/12-100-years-sata-iron-dragon-icon.png" alt="100 Years · Sata · Iron Dragon [Temporary]" />
+            <p class="creature-type">Type: 300 Years · Mount</p>
+          </div>
+          <div class="info-section">
+            <p class="info-label">Trade Info</p>
+            <div class="trade-line">
+              <span class="trade-pill">Trade</span>
+              <span class="trade-pill">Auction</span>
+              <span class="trade-pill">Request</span>
+            </div>
+          </div>
+          <div class="info-section">
+            <p class="info-label">Special Attribute</p>
+            <p class="info-text">Self and Variant Parts: Sata · Iron Dragon Head, Sata · Iron Dragon Tail</p>
+          </div>
+        </article>
+
+        <article class="creature-card" data-parts="horn head tail">
+          <h2 class="creature-name">Mangcang · Tangshu [Temporary]</h2>
+          <div class="creature-top">
+            <img class="creature-icon" src="../../images/indestructible/icons/13-mangcang-tangshu-icon.png" alt="Mangcang · Tangshu [Temporary]" />
+            <p class="creature-type">Type: Mount</p>
+          </div>
+          <div class="info-section">
+            <p class="info-label">Trade Info</p>
+            <div class="trade-line">
+              <span class="trade-pill">Discard</span>
+              <span class="trade-pill">Trade</span>
+              <span class="trade-pill">Auction</span>
+              <span class="trade-pill">Request</span>
+            </div>
+          </div>
+          <div class="info-section">
+            <p class="info-label">Special Attribute</p>
+            <p class="info-text">Self and Variant Parts: Mangcang · Tangshu Horn, Mangcang · Tangshu Head, Mangcang · Tangshu Tail</p>
+          </div>
+        </article>
+
+        <article class="creature-card" data-parts="horn head neck tail">
+          <h2 class="creature-name">1,000 Years · Fuzhu [Temporary]</h2>
+          <div class="creature-top">
+            <img class="creature-icon" src="../../images/indestructible/icons/14-1000-years-fuzhu-icon.png" alt="1,000 Years · Fuzhu [Temporary]" />
+            <p class="creature-type">Type: 1,000 Years · Mount</p>
+          </div>
+          <div class="info-section">
+            <p class="info-label">Trade Info</p>
+            <div class="trade-line">
+              <span class="trade-pill">Auction</span>
+              <span class="trade-pill">Request</span>
+            </div>
+          </div>
+          <div class="info-section">
+            <p class="info-label">Special Attribute</p>
+            <p class="info-text">Self and Variant Parts: Fuzhu Horn, Fuzhu Head, Fuzhu Tail, Fuzhu Neck</p>
+          </div>
+        </article>
+
+        <article class="creature-card" data-parts="horn head tail back">
+          <h2 class="creature-name">Lingshuo · Yuanhu [Temporary]</h2>
+          <div class="creature-top">
+            <img class="creature-icon" src="../../images/indestructible/icons/15-lingshuo-yuanhu-icon.png" alt="Lingshuo · Yuanhu [Temporary]" />
+            <p class="creature-type">Type: 3,000 Years · Mount</p>
+          </div>
+          <div class="info-section">
+            <p class="info-label">Trade Info</p>
+            <div class="trade-line">
+              <span class="trade-pill">Auction</span>
+              <span class="trade-pill">Request</span>
+            </div>
+          </div>
+          <div class="info-section">
+            <p class="info-label">Special Attribute</p>
+            <p class="info-text">Self and Variant Parts: Lingshuo · Yuanhu Horn, Lingshuo · Yuanhu Head, Lingshuo · Yuanhu Tail, Lingshuo · Yuanhu Back</p>
+          </div>
+        </article>
+
+        <article class="creature-card" data-parts="horn head left-arm right-arm">
+          <h2 class="creature-name">1,000 Years · Chongyan · Wujian [Temporary]</h2>
+          <div class="creature-top">
+            <img class="creature-icon" src="../../images/indestructible/icons/16-1000-years-chongyan-wujian-icon.png" alt="1,000 Years · Chongyan · Wujian [Temporary]" />
+            <p class="creature-type">Type: 3,000 Years · Mount</p>
+          </div>
+          <div class="info-section">
+            <p class="info-label">Trade Info</p>
+            <div class="trade-line">
+              <span class="trade-pill">Auction</span>
+              <span class="trade-pill">Request</span>
+            </div>
+          </div>
+          <div class="info-section">
+            <p class="info-label">Special Attribute</p>
+            <p class="info-text">Self and Variant Parts: Chongyan · Wujian Horn, Chongyan · Wujian Head, Chongyan · Wujian Left Arm, Chongyan · Wujian Right Arm</p>
+          </div>
+        </article>
+
+        <article class="creature-card" data-parts="horn head tail back">
+          <h2 class="creature-name">1,000 Years · Lingshuo · Rust Wolf [Temporary]</h2>
+          <div class="creature-top">
+            <img class="creature-icon" src="../../images/indestructible/icons/17-1000-years-lingshuo-rust-wolf-icon.png" alt="1,000 Years · Lingshuo · Rust Wolf [Temporary]" />
+            <p class="creature-type">Type: 3,000 Years · Mount</p>
+          </div>
+          <div class="info-section">
+            <p class="info-label">Trade Info</p>
+            <div class="trade-line">
+              <span class="trade-pill">Auction</span>
+              <span class="trade-pill">Request</span>
+            </div>
+          </div>
+          <div class="info-section">
+            <p class="info-label">Special Attribute</p>
+            <p class="info-text">Self and Variant Parts: Lingshuo · Rust Wolf Horn, Lingshuo · Rust Wolf Head, Lingshuo · Rust Wolf Tail, Lingshuo · Rust Wolf Back</p>
+          </div>
+        </article>
+
+        <article class="creature-card" data-parts="horn head back wings">
+          <h2 class="creature-name">1,000 Years · Mangcang · Pod Silkworm [Temporary]</h2>
+          <div class="creature-top">
+            <img class="creature-icon" src="../../images/indestructible/icons/18-1000-years-mangcang-pod-silkworm-icon.png" alt="1,000 Years · Mangcang · Pod Silkworm [Temporary]" />
+            <p class="creature-type">Type: 5,000 Years · Mount</p>
+          </div>
+          <div class="info-section">
+            <p class="info-label">Trade Info</p>
+            <div class="trade-line">
+              <span class="trade-pill">Auction</span>
+              <span class="trade-pill">Request</span>
+            </div>
+          </div>
+          <div class="info-section">
+            <p class="info-label">Special Attribute</p>
+            <p class="info-text">Self and Variant Parts: Mangcang · Pod Silkworm Horn, Mangcang · Pod Silkworm Head, Mangcang · Pod Silkworm Wing, Mangcang · Pod Silkworm Back</p>
+          </div>
+        </article>
+
+        <article class="creature-card" data-parts="head tail">
+          <h2 class="creature-name">1,000 Years · Sata · Iron Dragon [Temporary]</h2>
+          <div class="creature-top">
+            <img class="creature-icon" src="../../images/indestructible/icons/19-1000-years-sata-iron-dragon-icon.png" alt="1,000 Years · Sata · Iron Dragon [Temporary]" />
+            <p class="creature-type">Type: 8,000 Years · Mount</p>
+          </div>
+          <div class="info-section">
+            <p class="info-label">Trade Info</p>
+            <div class="trade-line">
+              <span class="trade-pill">Auction</span>
+              <span class="trade-pill">Request</span>
+            </div>
+          </div>
+          <div class="info-section">
+            <p class="info-label">Special Attribute</p>
+            <p class="info-text">Self and Variant Parts: Sata · Iron Dragon Head, Sata · Iron Dragon Tail</p>
+          </div>
+        </article>
+
+        <article class="creature-card" data-parts="horn head tail">
+          <h2 class="creature-name">1,000 Years · Mangcang · Tangshu [Temporary]</h2>
+          <div class="creature-top">
+            <img class="creature-icon" src="../../images/indestructible/icons/20-1000-years-mangcang-tangshu-icon.png" alt="1,000 Years · Mangcang · Tangshu [Temporary]" />
+            <p class="creature-type">Type: 8,000 Years · Mount</p>
+          </div>
+          <div class="info-section">
+            <p class="info-label">Trade Info</p>
+            <div class="trade-line">
+              <span class="trade-pill">Auction</span>
+              <span class="trade-pill">Request</span>
+            </div>
+          </div>
+          <div class="info-section">
+            <p class="info-label">Special Attribute</p>
+            <p class="info-text">Self and Variant Parts: Mangcang · Tangshu Horn, Mangcang · Tangshu Head, Mangcang · Tangshu Tail</p>
+          </div>
+        </article>
+
+        <article class="creature-card" data-parts="horn head neck tail">
+          <h2 class="creature-name">10,000 Years · Fuzhu [Temporary]</h2>
+          <div class="creature-top">
+            <img class="creature-icon" src="../../images/indestructible/icons/21-10000-years-fuzhu-icon.png" alt="10,000 Years · Fuzhu [Temporary]" />
+            <p class="creature-type">Type: 10,000 Years · Mount</p>
+          </div>
+          <div class="info-section">
+            <p class="info-label">Trade Info</p>
+            <div class="trade-line">
+              <span class="trade-pill">Auction</span>
+              <span class="trade-pill">Request</span>
+            </div>
+          </div>
+          <div class="info-section">
+            <p class="info-label">Special Attribute</p>
+            <p class="info-text">Self and Variant Parts: Fuzhu Horn, Fuzhu Head, Fuzhu Tail, Fuzhu Neck</p>
+          </div>
+        </article>
+
+        <article class="creature-card" data-parts="horn head left-arm right-arm">
+          <h2 class="creature-name">10,000 Years · Chongyan · Wujian [Temporary]</h2>
+          <div class="creature-top">
+            <img class="creature-icon" src="../../images/indestructible/icons/22-10000-years-chongyan-wujian-icon.png" alt="10,000 Years · Chongyan · Wujian [Temporary]" />
+            <p class="creature-type">Type: 13,000 Years · Mount</p>
+          </div>
+          <div class="info-section">
+            <p class="info-label">Trade Info</p>
+            <div class="trade-line">
+              <span class="trade-pill">Auction</span>
+              <span class="trade-pill">Request</span>
+            </div>
+          </div>
+          <div class="info-section">
+            <p class="info-label">Special Attribute</p>
+            <p class="info-text">Self and Variant Parts: Chongyan · Wujian Horn, Chongyan · Wujian Head, Chongyan · Wujian Left Arm, Chongyan · Wujian Right Arm</p>
+          </div>
+        </article>
+
+        <article class="creature-card" data-parts="horn head tail back">
+          <h2 class="creature-name">10,000 Years · Lingshuo · Rust Wolf [Temporary]</h2>
+          <div class="creature-top">
+            <img class="creature-icon" src="../../images/indestructible/icons/23-10000-years-lingshuo-rust-wolf-icon.png" alt="10,000 Years · Lingshuo · Rust Wolf [Temporary]" />
+            <p class="creature-type">Type: 18,000 Years · Mount</p>
+          </div>
+          <div class="info-section">
+            <p class="info-label">Trade Info</p>
+            <div class="trade-line">
+              <span class="trade-pill">Auction</span>
+              <span class="trade-pill">Request</span>
+            </div>
+          </div>
+          <div class="info-section">
+            <p class="info-label">Special Attribute</p>
+            <p class="info-text">Self and Variant Parts: Lingshuo · Rust Wolf Horn, Lingshuo · Rust Wolf Head, Lingshuo · Rust Wolf Tail, Lingshuo · Rust Wolf Back</p>
+          </div>
+        </article>
+
+        <article class="creature-card" data-parts="horn head back wings">
+          <h2 class="creature-name">10,000 Years · Mangcang · Pod Silkworm [Temporary]</h2>
+          <div class="creature-top">
+            <img class="creature-icon" src="../../images/indestructible/icons/24-10000-years-mangcang-pod-silkworm-icon.png" alt="10,000 Years · Mangcang · Pod Silkworm [Temporary]" />
+            <p class="creature-type">Type: 13,000 Years · Mount</p>
+          </div>
+          <div class="info-section">
+            <p class="info-label">Trade Info</p>
+            <div class="trade-line">
+              <span class="trade-pill">Auction</span>
+              <span class="trade-pill">Request</span>
+            </div>
+          </div>
+          <div class="info-section">
+            <p class="info-label">Special Attribute</p>
+            <p class="info-text">Self and Variant Parts: Mangcang · Pod Silkworm Horn, Mangcang · Pod Silkworm Head, Mangcang · Pod Silkworm Wing, Mangcang · Pod Silkworm Back</p>
+          </div>
+        </article>
+
+        <article class="creature-card" data-parts="head tail">
+          <h2 class="creature-name">10,000 Years · Sata · Iron Dragon [Temporary]</h2>
+          <div class="creature-top">
+            <img class="creature-icon" src="../../images/indestructible/icons/25-10000-years-sata-iron-dragon-icon.png" alt="10,000 Years · Sata · Iron Dragon [Temporary]" />
+            <p class="creature-type">Type: 10,000 Years · Mount</p>
+          </div>
+          <div class="info-section">
+            <p class="info-label">Trade Info</p>
+            <div class="trade-line">
+              <span class="trade-pill">Auction</span>
+              <span class="trade-pill">Request</span>
+            </div>
+          </div>
+          <div class="info-section">
+            <p class="info-label">Special Attribute</p>
+            <p class="info-text">Self and Variant Parts: Sata · Iron Dragon Head, Sata · Iron Dragon Tail</p>
+          </div>
+        </article>
+
+        <article class="creature-card" data-parts="horn head neck tail">
+          <h2 class="creature-name">30,000 Years · Fuzhu [Temporary]</h2>
+          <div class="creature-top">
+            <img class="creature-icon" src="../../images/indestructible/icons/26-30000-years-fuzhu-icon.png" alt="30,000 Years · Fuzhu [Temporary]" />
+            <p class="creature-type">Type: 30,000 Years · Mount</p>
+          </div>
+          <div class="info-section">
+            <p class="info-label">Trade Info</p>
+            <div class="trade-line">
+              <span class="trade-pill">Auction</span>
+              <span class="trade-pill">Request</span>
+            </div>
+          </div>
+          <div class="info-section">
+            <p class="info-label">Special Attribute</p>
+            <p class="info-text">Self and Variant Parts: Fuzhu Horn, Fuzhu Head, Fuzhu Tail, Fuzhu Neck</p>
+          </div>
+        </article>
+
+        <article class="creature-card" data-parts="horn head left-arm right-arm">
+          <h2 class="creature-name">30,000 Years · Chongyan · Wujian [Temporary]</h2>
+          <div class="creature-top">
+            <img class="creature-icon" src="../../images/indestructible/icons/27-30000-years-chongyan-wujian-icon.png" alt="30,000 Years · Chongyan · Wujian [Temporary]" />
+            <p class="creature-type">Type: 30,000 Years · Mount</p>
+          </div>
+          <div class="info-section">
+            <p class="info-label">Trade Info</p>
+            <div class="trade-line">
+              <span class="trade-pill">Auction</span>
+              <span class="trade-pill">Request</span>
+            </div>
+          </div>
+          <div class="info-section">
+            <p class="info-label">Special Attribute</p>
+            <p class="info-text">Self and Variant Parts: Chongyan · Wujian Horn, Chongyan · Wujian Head, Chongyan · Wujian Left Arm, Chongyan · Wujian Right Arm</p>
+          </div>
+        </article>
+
+        <article class="creature-card" data-parts="horn head tail back">
+          <h2 class="creature-name">30,000 Years · Lingshuo · Rust Wolf [Temporary]</h2>
+          <div class="creature-top">
+            <img class="creature-icon" src="../../images/indestructible/icons/29-30000-years-lingshuo-rust-wolf-icon.png" alt="30,000 Years · Lingshuo · Rust Wolf [Temporary]" />
+            <p class="creature-type">Type: 30,000 Years · Mount</p>
+          </div>
+          <div class="info-section">
+            <p class="info-label">Trade Info</p>
+            <div class="trade-line">
+              <span class="trade-pill">Auction</span>
+              <span class="trade-pill">Request</span>
+            </div>
+          </div>
+          <div class="info-section">
+            <p class="info-label">Special Attribute</p>
+            <p class="info-text">Self and Variant Parts: Lingshuo · Rust Wolf Horn, Lingshuo · Rust Wolf Head, Lingshuo · Rust Wolf Tail, Lingshuo · Rust Wolf Back</p>
+          </div>
+        </article>
+
+        <article class="creature-card" data-parts="horn head back wings">
+          <h2 class="creature-name">40,000 Years · Mangcang · Pod Silkworm [Temporary]</h2>
+          <div class="creature-top">
+            <img class="creature-icon" src="../../images/indestructible/icons/30-40000-years-mangcang-pod-silkworm-icon.png" alt="40,000 Years · Mangcang · Pod Silkworm [Temporary]" />
+            <p class="creature-type">Type: 40,000 Years · Mount</p>
+          </div>
+          <div class="info-section">
+            <p class="info-label">Trade Info</p>
+            <div class="trade-line">
+              <span class="trade-pill">Auction</span>
+              <span class="trade-pill">Request</span>
+            </div>
+          </div>
+          <div class="info-section">
+            <p class="info-label">Special Attribute</p>
+            <p class="info-text">Self and Variant Parts: Mangcang · Pod Silkworm Horn, Mangcang · Pod Silkworm Head, Mangcang · Pod Silkworm Wing, Mangcang · Pod Silkworm Back</p>
+          </div>
+        </article>
+
+        <article class="creature-card" data-parts="horn head tail">
+          <h2 class="creature-name">40,000 Years · Mangcang · Tangshu [Temporary]</h2>
+          <div class="creature-top">
+            <img class="creature-icon" src="../../images/indestructible/icons/31-40000-years-mangcang-tangshu-icon.png" alt="40,000 Years · Mangcang · Tangshu [Temporary]" />
+            <p class="creature-type">Type: 40,000 Years · Mount</p>
+          </div>
+          <div class="info-section">
+            <p class="info-label">Trade Info</p>
+            <div class="trade-line">
+              <span class="trade-pill">Auction</span>
+              <span class="trade-pill">Request</span>
+            </div>
+          </div>
+          <div class="info-section">
+            <p class="info-label">Special Attribute</p>
+            <p class="info-text">Self and Variant Parts: Mangcang · Tangshu Horn, Mangcang · Tangshu Head, Mangcang · Tangshu Tail</p>
+          </div>
+        </article>
+
+        <article class="creature-card" data-parts="horn head neck tail">
+          <h2 class="creature-name">50,000 Years · Fuzhu [Temporary]</h2>
+          <div class="creature-top">
+            <img class="creature-icon" src="../../images/indestructible/icons/32-50000-years-fuzhu-icon.png" alt="50,000 Years · Fuzhu [Temporary]" />
+            <p class="creature-type">Type: 50,000 Years · Mount</p>
+          </div>
+          <div class="info-section">
+            <p class="info-label">Trade Info</p>
+            <div class="trade-line">
+              <span class="trade-pill">Auction</span>
+            </div>
+          </div>
+          <div class="info-section">
+            <p class="info-label">Special Attribute</p>
+            <p class="info-text">Self and Variant Parts: Fuzhu Horn, Fuzhu Head, Fuzhu Tail, Fuzhu Neck</p>
+          </div>
+        </article>
+
+        <article class="creature-card" data-parts="horn head tail back">
+          <h2 class="creature-name">50,000 Years · Lingshuo · Yuanhu [Temporary]</h2>
+          <div class="creature-top">
+            <img class="creature-icon" src="../../images/indestructible/icons/33-50000-years-lingshuo-yuanhu-icon.png" alt="50,000 Years · Lingshuo · Yuanhu [Temporary]" />
+            <p class="creature-type">Type: 50,000 Years · Mount</p>
+          </div>
+          <div class="info-section">
+            <p class="info-label">Trade Info</p>
+            <div class="trade-line">
+              <span class="trade-pill">Auction</span>
+            </div>
+          </div>
+          <div class="info-section">
+            <p class="info-label">Special Attribute</p>
+            <p class="info-text">Self and Variant Parts: Lingshuo · Yuanhu Horn, Lingshuo · Yuanhu Head, Lingshuo · Yuanhu Tail, Lingshuo · Yuanhu Back</p>
+          </div>
+        </article>
+
+        <article class="creature-card" data-parts="head tail">
+          <h2 class="creature-name">50,000 Years · Sata · Iron Dragon [Temporary]</h2>
+          <div class="creature-top">
+            <img class="creature-icon" src="../../images/indestructible/icons/34-50000-years-sata-iron-dragon-icon.png" alt="50,000 Years · Sata · Iron Dragon [Temporary]" />
+            <p class="creature-type">Type: 50,000 Years · Mount</p>
+          </div>
+          <div class="info-section">
+            <p class="info-label">Trade Info</p>
+            <div class="trade-line">
+              <span class="trade-pill">Auction</span>
+            </div>
+          </div>
+          <div class="info-section">
+            <p class="info-label">Special Attribute</p>
+            <p class="info-text">Self and Variant Parts: Sata · Iron Dragon Head, Sata · Iron Dragon Tail</p>
+          </div>
+        </article>
+
+      </div>
+    </section>
+  </main>
+
+  <script>
+    const filterButtons = document.querySelectorAll(".filter-btn");
+    const cards = document.querySelectorAll(".creature-card");
+    const visibleCount = document.getElementById("visible-count");
+    const noResultsMessage = document.getElementById("no-results-message");
+
+    function getActivePartFilters() {
+      return [...filterButtons]
+        .filter(button => button.classList.contains("active") && button.dataset.filter !== "none")
+        .map(button => button.dataset.filter);
+    }
+
+    function updateCount() {
+      const visibleCards = document.querySelectorAll(".creature-card:not(.hidden-card)");
+      if (visibleCount) visibleCount.textContent = visibleCards.length;
+      if (noResultsMessage) {
+        noResultsMessage.classList.toggle("show", visibleCards.length === 0);
+      }
+    }
+
+    function applyFilters() {
+      const activeFilters = getActivePartFilters();
+
+      cards.forEach(card => {
+        const parts = (card.dataset.parts || "").split(" ").filter(Boolean);
+
+        /*
+          Multiple selected filters use OR logic:
+          Example: Horn + Back shows cards that have Horn OR Back.
+          None shows all cards.
+        */
+        const shouldShow =
+          activeFilters.length === 0 ||
+          activeFilters.some(filter => parts.includes(filter));
+
+        card.classList.toggle("hidden-card", !shouldShow);
+      });
+
+      updateCount();
+    }
+
+    filterButtons.forEach(button => {
+      button.addEventListener("click", () => {
+        const selectedFilter = button.dataset.filter;
+        const noneButton = document.querySelector('.filter-btn[data-filter="none"]');
+
+        if (selectedFilter === "none") {
+          filterButtons.forEach(btn => btn.classList.remove("active"));
+          button.classList.add("active");
+          applyFilters();
+          return;
+        }
+
+        if (noneButton) noneButton.classList.remove("active");
+        button.classList.toggle("active");
+
+        const activeFilters = getActivePartFilters();
+
+        if (activeFilters.length === 0 && noneButton) {
+          noneButton.classList.add("active");
+        }
+
+        applyFilters();
+      });
+    });
+
+    applyFilters();
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Battle Traits Reference</title>
+  <link rel="stylesheet" href="./assets/css/styles.css" />
+
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-BWQW8RC3GJ"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-BWQW8RC3GJ');
+  </script>
+
+  <style>
+    .update-notice {
+      margin: 10px 0 14px;
+      padding: 8px 10px;
+      border: 1px solid rgba(255, 255, 255, 0.09);
+      border-radius: 12px;
+      background: rgba(255, 255, 255, 0.035);
+    }
+
+    .update-line {
+      margin: 0;
+      color: rgba(242, 246, 255, 0.72);
+      font-size: 11.5px;
+      font-weight: 700;
+      line-height: 1.45;
+    }
+
+    .update-line strong {
+      color: rgba(255, 255, 255, 0.9);
+      font-weight: 900;
+    }
+
+    .update-traits {
+      color: rgba(242, 246, 255, 0.82);
+      font-weight: 800;
+    }
+  </style>
+
+</head>
+<body>
+  <main class="page">
+    <header class="topbar">
+      <div>
+        <p class="eyebrow">Interactive Reference</p>
+        <h1>Battle Traits</h1>
+        <p class="subtitle">
+          Each trait shows a short description. Click a trait to open its separate page with full information and cards.
+        </p>
+      </div>
+
+      <aside class="toolbar" aria-label="Trait controls">
+        <label class="search-wrap">
+          <span>⌕</span>
+          <input class="search-input" id="searchInput" type="search" placeholder="Search traits..." autocomplete="off" />
+        </label>
+        <p class="counter" id="counter">40 traits available</p>
+      </aside>
+    </header>
+
+    <section class="update-notice" aria-label="Update Notice">
+      <p class="update-line">
+        <strong>Update Notice:</strong>
+        <span class="update-traits">Star Shift</span>, 
+        <span class="update-traits">Stormy Seas</span>, and 
+        <span class="update-traits">Indestructible</span> trait pages added. 
+    Filters were also added to these trait pages so cards can be viewed by mutation part.
+      </p>
+    </section>
+
+
+<section class="traits-panel">
+      <div class="traits-grid" id="traitsGrid">
+        <a class="trait-card" href="./traits/star-shift/index.html">
+	  <span class="trait-name">Star Shift</span>
+	  <p class="trait-description">Contains a variant temporary card with [Star Shift]. Max-level effect: Activates at battle start and transfers one unactivated negative trait to the opponent (Power 718).</p>
+	  <span class="trait-action">→</span>
+	</a>
+        <a class="trait-card" href="./traits/unshakable/index.html">
+	  <span class="trait-name">Unshakable</span>
+	  <p class="trait-description">Contains a variant temporary card with [Unshakable]. Max-level effect: Activates at battle start. After activation, you receive debuff protection, and negative traits on you will not activate (Power 298).</p>
+	  <span class="trait-action">→</span>
+	</a>
+        <a class="trait-card" href="./traits/savage-intimidation/index.html">
+	  <span class="trait-name">Savage Intimidation</span>
+	  <p class="trait-description">Contains a variant temporary card with [Savage Intimidation]. Max-level effect: At battle start, gives the opponent a permanent negative trait, [Terrified], reducing the target’s attack by 19% (Power 199).</p>
+	  <span class="trait-action">→</span>
+	</a>
+        <a class="trait-card" href="./traits/grounded-prison/index.html">
+	  <span class="trait-name">Grounded Prison</span>
+	  <p class="trait-description">Contains a variant temporary card with [Grounded Prison]. Max-level effect: Activates at battle start. The target’s [Take in Passing] trait is disabled; the disabled trait will fail the next time it activates (Power 664).</p>
+	  <span class="trait-action">→</span>
+	</a>
+        <a class="trait-card" href="./traits/synchronized-self-seal/index.html">
+	  <span class="trait-name">Synchronized Self-Seal</span>
+	  <p class="trait-description">Contains a variant temporary card with [Synchronized Self-Seal]. Max-level effect: Activates at battle start. The target’s [Light After Darkness] trait is disabled; the disabled trait will fail the next time it activates (Power 301).</p>
+	  <span class="trait-action">→</span>
+	</a>
+        <a class="trait-card" href="./traits/horned-armor/index.html">
+	  <span class="trait-name">Horn-Edge Armor Corrosion</span>
+	  <p class="trait-description">Contains a variant temporary card with [Horn-Edge Armor Corrosion]. Max-level effect: At battle start, gives the opponent a permanent negative trait, [Wretched State], reducing the target’s defense by 44% (Power 714).</p>
+ 	 <span class="trait-action">→</span>
+	</a>
+        <a class="trait-card" href="./traits/indestructible/index.html">
+	  <span class="trait-name">Indestructible</span>
+	  <p class="trait-description">Contains a variant temporary card with [Indestructible]. Max-level effect: Activates at battle start. This round, your defense increases by 41% (Power 626).</p>
+	  <span class="trait-action">→</span>
+	</a>
+        <a class="trait-card" href="./traits/imprisoned/index.html">
+	  <span class="trait-name">Imprisoned</span>
+	  <p class="trait-description">Contains a variant temporary card with [Imprisoned]. Max-level effect: Activates at battle start and disables one random unactivated trait from the opponent. However, [Light After Darkness] cannot be disabled (Power 724).</p>
+	  <span class="trait-action">→</span>
+	</a>
+        <a class="trait-card" href="./traits/light-after-darkness/index.html">
+	  <span class="trait-name">Light After Darkness</span>
+	  <p class="trait-description">Contains a variant temporary card with [Light After Darkness]. Max-level effect: Activates at battle start and randomly unseals one disabled trait (Power 723).</p>
+	  <span class="trait-action">→</span>
+	</a>
+        <a class="trait-card" href="./traits/blade-corrosion/index.html">
+	  <span class="trait-name">Blade Corrosion</span>
+	  <p class="trait-description">Contains a variant temporary card with [Blade Corrosion]. Max-level effect: At battle start, gives the opponent a permanent negative trait, [Clinging to the Remnants], reducing the target’s defense penetration by 44% (Power 714).</p>
+	  <span class="trait-action">→</span>
+	</a>
+        <a class="trait-card" href="./traits/silent-iron-cutting/index.html">
+	  <span class="trait-name">Silent Iron-Cutting</span>
+	  <p class="trait-description">Contains a variant temporary card with [Silent Iron-Cutting]. Max-level effect: Activates at battle start. This round, your defense penetration increases by 44% (Power 714).</p>
+	  <span class="trait-action">→</span>
+	</a>
+        <a class="trait-card" href="./traits/take-in-passing/index.html">
+	  <span class="trait-name">Take in Passing</span>
+	  <p class="trait-description">Contains a variant temporary card with [Take in Passing]. Max-level effect: Activates at battle start and steals one random unactivated trait from the opponent. Cannot steal [Mend the Fold], but the opponent will gain one [Mend the Fold] trait (Power 721).</p>
+	  <span class="trait-action">→</span>
+	</a>
+        <a class="trait-card" href="./traits/mend-the-fold/index.html">
+	  <span class="trait-name">Mend the Fold</span>
+	  <p class="trait-description">Contains a variant temporary card with [Mend the Fold]. Max-level effect: Activates at battle start. After activation, you receive theft protection. If the opponent steals a trait, the effect is reflected and steals one trait from the opponent instead (Power 303).</p>
+	  <span class="trait-action">→</span>
+	</a>
+        <a class="trait-card" href="./traits/tiger-wolf-stance/index.html">
+	  <span class="trait-name">Tiger-Wolf Stance</span>
+	  <p class="trait-description">Contains a variant temporary card with [Tiger-Wolf Stance]. Max-level effect: Activates at battle start. This round, your melee damage increases by 44% (Power 714).</p>
+	  <span class="trait-action">→</span>
+	</a>
+        <a class="trait-card" href="./traits/thorn-armor/index.html">
+	  <span class="trait-name">Thorn Armor</span>
+	  <p class="trait-description">Contains a variant temporary card with [Thorn Armor]. Max-level effect: Activates at battle start. This round, your melee damage reduction increases by 44% (Power 714).</p>
+	  <span class="trait-action">→</span>
+	</a>
+        <a class="trait-card" href="./traits/stormy-seas/index.html">
+	  <span class="trait-name">Stormy Seas</span>
+	  <p class="trait-description">Contains a variant temporary card with [Stormy Seas]. Max-level effect: Activates at battle start. This round, your Battle Beast damage bonus increases by 22% (Power 714).</p>
+	  <span class="trait-action">→</span>
+	</a>
+        <a class="trait-card" href="./traits/solid-as-rock/index.html">
+	  <span class="trait-name">Solid as Rock</span>
+	  <p class="trait-description">Contains a variant temporary card with [Solid as Rock]. Max-level effect: Activates at battle start. This round, your Battle Beast damage reduction increases by 22% (Power 714).</p>
+	  <span class="trait-action">→</span>
+	</a>
+        <a class="trait-card" href="./traits/unstoppable/index.html">
+	  <span class="trait-name">Unstoppable</span>
+	  <p class="trait-description">Contains a variant temporary card with [Unstoppable]. Max-level effect: Activates at battle start. This round, every 10 seconds, knocks down the target for 2 seconds (Power 715).</p>
+	  <span class="trait-action">→</span>
+	</a>
+        <a class="trait-card" href="./traits/steady-as-mount-tai/index.html">
+	  <span class="trait-name">Steady as Mount Tai</span>
+	  <p class="trait-description">Contains a variant temporary card with [Steady as Mount Tai]. Max-level effect: Activates at battle start. The target’s [Unstoppable] trait is disabled; the disabled trait will fail the next time it activates (Power 716).</p>
+	  <span class="trait-action">→</span>
+</a>
+        <a class="trait-card" href="./traits/raw-and-ruthless/index.html">
+	  <span class="trait-name">Raw and Ruthless</span>
+	  <p class="trait-description">Contains a variant temporary card with [Raw and Ruthless]. Max-level effect: Activates at battle start. This round, your life steal increases by 25% (Power 715).</p>
+	  <span class="trait-action">→</span>
+	</a>
+        <a class="trait-card" href="./traits/feast-on-wind-and-dew/index.html">
+	  <span class="trait-name">Feast on Wind and Dew</span>
+	  <p class="trait-description">Contains a variant temporary card with [Feast on Wind and Dew]. Max-level effect: Activates at battle start. The target’s [Raw and Ruthless] trait is disabled; the disabled trait will fail the next time it activates (Power 716).</p>
+	  <span class="trait-action">→</span>
+	</a>
+        <a class="trait-card" href="./traits/iron-wall/index.html">
+	  <span class="trait-name">Iron Wall</span>
+	  <p class="trait-description">Contains a variant temporary card with [Iron Wall]. Max-level effect: Activates at battle start. This round, blocks 1 instance of damage every 8 seconds (Power 715).</p>
+	  <span class="trait-action">→</span>
+	</a>
+        <a class="trait-card" href="./traits/seize-the-opening/index.html">
+	  <span class="trait-name">Seize the Opening</span>
+	  <p class="trait-description">Contains a variant temporary card with [Seize the Opening]. Max-level effect: Activates at battle start. The target’s [Iron Wall] trait is disabled; the disabled trait will fail the next time it activates (Power 716).</p>
+	  <span class="trait-action">→</span>
+	</a>
+        <a class="trait-card" href="./traits/spider-silk-net/index.html">
+  	 <span class="trait-name">Spider Silk Net</span>
+ 	 <p class="trait-description">Contains a variant temporary card with [Spider Silk Net]. Max-level effect: Activates at battle start. The target is immobilized for 30 seconds (Power 715).</p>
+  	 <span class="trait-action">→</span>
+	</a>
+        <a class="trait-card" href="./traits/flashing-evasion/index.html">
+	  <span class="trait-name">Flashing Evasion</span>
+	  <p class="trait-description">Contains a variant temporary card with [Flashing Evasion]. Max-level effect: Activates at battle start. The target’s [Spider Silk Net] trait is disabled; the disabled trait will fail the next time it activates (Power 716).</p>
+ 	  <span class="trait-action">→</span>
+	</a>
+        <a class="trait-card" href="./traits/tendon-and-bone-break/index.html">
+	  <span class="trait-name">Tendon and Bone Break</span>
+	  <p class="trait-description">Contains a variant temporary card with [Tendon and Bone Break]. Max-level effect: Activates at battle start. The target’s speed is reduced by 84% (Power 715).</p>
+	  <span class="trait-action">→</span>
+	</a>
+        <a class="trait-card" href="./traits/lightning-flash/index.html">
+	  <span class="trait-name">Lightning Flash</span>
+	  <p class="trait-description">Contains a variant temporary card with [Lightning Flash]. Max-level effect: Activates at battle start. The target’s [Tendon and Bone Break] trait is disabled; the disabled trait will fail the next time it activates (Power 716).</p>
+	  <span class="trait-action">→</span>
+	</a>
+        <a class="trait-card" href="./traits/bewitching-scale-powder/index.html">
+	  <span class="trait-name">Bewitching Scale Powder</span>
+	  <p class="trait-description">Contains a variant temporary card with [Bewitching Scale Powder]. Max-level effect: Activates at battle start. The target cannot attack for 13 seconds (Power 715).</p>
+	  <span class="trait-action">→</span>
+	</a>
+        <a class="trait-card" href="./traits/sober-among-the-drunk/index.html">
+	  <span class="trait-name">Sober Among the Drunk</span>
+	  <p class="trait-description">Contains a variant temporary card with [Sober Among the Drunk]. Max-level effect: Activates at battle start. The target’s [Bewitching Scale Powder] trait is disabled; the disabled trait will fail the next time it activates (Power 716).</p>
+	  <span class="trait-action">→</span>
+	</a>
+        <a class="trait-card" href="./traits/mountain-lifting-strength/index.html">
+  	 <span class="trait-name">Mountain-Lifting Strength</span>
+  	 <p class="trait-description">Contains a variant temporary card with [Mountain-Lifting Strength]. Max-level effect: Activates at battle start. This round, your attack increases by 21% (Power 235).</p>
+ 	 <span class="trait-action">→</span>
+	</a>
+        <a class="trait-card" href="./traits/nowhere-to-hide/index.html">
+	  <span class="trait-name">Nowhere to Hide</span>
+	  <p class="trait-description">Contains a variant temporary card with [Nowhere to Hide]. Max-level effect: Activates at battle start. The target’s [Protective Witchcraft] trait is disabled; the disabled trait will fail the next time it activates (Power 661).</p>
+	  <span class="trait-action">→</span>
+	</a>
+        <a class="trait-card" href="./traits/protective-witchcraft/index.html">
+	  <span class="trait-name">Protective Witchcraft</span>
+	  <p class="trait-description">Contains a variant temporary card with [Protective Witchcraft]. Max-level effect: Activates at battle start. You become invincible for 13 seconds (Power 715).</p>
+	  <span class="trait-action">→</span>
+	</a>
+        <a class="trait-card" href="./traits/preemptive-strike/index.html">
+	  <span class="trait-name">Preemptive Strike</span>
+	  <p class="trait-description">Contains a variant temporary card with [Preemptive Strike]. Max-level effect: Activates at battle start. The target is stunned for 13 seconds (Power 715).</p>
+	  <span class="trait-action">→</span>
+	</a>
+        <a class="trait-card" href="./traits/counter-initiative/index.html">
+	  <span class="trait-name">Counter Initiative</span>
+	  <p class="trait-description">Contains a variant temporary card with [Counter Initiative]. Max-level effect: Activates at battle start. The target’s [Preemptive Strike] trait is disabled; the disabled trait will fail the next time it activates (Power 716).</p>
+	  <span class="trait-action">→</span>
+	</a>
+        <a class="trait-card" href="./traits/flawless-defense/index.html">
+	  <span class="trait-name">Flawless Defense</span>
+	  <p class="trait-description">Contains a variant temporary card with [Flawless Defense]. Max-level effect: Activates at battle start. This round, your ranged damage reduction increases by 11% (Power 27).</p>
+	  <span class="trait-action">→</span>
+	</a>
+        <a class="trait-card" href="./traits/vital-ambush/index.html">
+          <span class="trait-name">Vital Ambush</span>
+          <p class="trait-description">Contains a variant temporary card with [Vital Ambush]. Max-level effect: Activates at battle start. This round, your ranged damage increases by 11% (Power 27).</p>
+          <span class="trait-action">→</span>
+        </a>
+        <a class="trait-card" href="./traits/immovable-as-a-mountain/index.html">
+	  <span class="trait-name">Immovable as a Mountain</span>
+	  <p class="trait-description">Contains a variant temporary card with [Immovable as a Mountain]. Max-level effect: Activates at battle start. This round, your critical resistance increases by 12% (Power 27).</p>
+	  <span class="trait-action">→</span>
+	</a>
+        <a class="trait-card" href="./traits/crushing-force/index.html">
+	  <span class="trait-name">Crushing Force</span>
+	  <p class="trait-description">Contains a variant temporary card with [Crushing Force]. Max-level effect: Activates at battle start. This round, your critical rate increases by 12% (Power 27).</p>
+	  <span class="trait-action">→</span>
+	</a>
+        <a class="trait-card" href="./traits/free-advance-and-retreat/index.html">
+	  <span class="trait-name">Free Advance and Retreat</span>
+	  <p class="trait-description">Contains a variant temporary card with [Free Advance and Retreat]. Max-level effect: 6 seconds after activation at battle start, you may manually interrupt Battle Beast and recall your pet (Power 715).</p>
+	  <span class="trait-action">→</span>
+	</a>
+        <a class="trait-card" href="./traits/fight-to-the-death/index.html">
+	  <span class="trait-name">Fight to the Death</span>
+	  <p class="trait-description">Contains a variant temporary card with [Fight to the Death]. Max-level effect: Activates 6 seconds after battle start. The target’s [Free Advance and Retreat] trait is disabled; the disabled trait will fail the next time it activates (Power 716).</p>
+	  <span class="trait-action">→</span>
+	</a>
+        <p class="no-results" id="noResults">No matching traits found.</p>
+      </div>
+    </section>
+
+    <p class="hint">
+      <strong>Tip:</strong> Traits activate in order of strength. When a trait is disabled, it is only disabled the next time it would activate if it has already been triggered.
+    </p>
+  </main>
+
+  <script>
+    const searchInput = document.getElementById("searchInput");
+    const counter = document.getElementById("counter");
+    const noResults = document.getElementById("noResults");
+    const traitCards = [...document.querySelectorAll(".trait-card")];
+
+    function filterTraits() {
+      const keyword = searchInput.value.trim().toLowerCase();
+      let visibleCount = 0;
+
+      traitCards.forEach(card => {
+        const isMatch = card.textContent.toLowerCase().includes(keyword);
+        card.style.display = isMatch ? "block" : "none";
+        if (isMatch) visibleCount += 1;
+      });
+
+      noResults.classList.toggle("show", visibleCount === 0);
+      counter.textContent = `${visibleCount} of ${traitCards.length} traits shown`;
+    }
+
+    searchInput.addEventListener("input", filterTraits);
+    filterTraits();
+  </script>
+</body>
+</html>

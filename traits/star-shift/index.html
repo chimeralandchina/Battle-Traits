@@ -1,0 +1,567 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Star Shift | Battle Traits Reference</title>
+  <link rel="stylesheet" href="../../assets/css/styles.css" />
+
+  <style>
+    .star-shift-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 12px;
+    }
+
+    .creature-card {
+      padding: 12px;
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: 14px;
+      background: rgba(255, 255, 255, 0.045);
+      box-shadow: 0 12px 28px rgba(0, 0, 0, 0.16);
+    }
+
+    .creature-name {
+      margin-bottom: 10px;
+      color: #ffffff;
+      font-size: 15px;
+      font-weight: 900;
+      line-height: 1.25;
+    }
+
+    .creature-top {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 10px;
+    }
+
+    .creature-icon {
+      width: 72px;
+      height: 72px;
+      flex: 0 0 72px;
+      object-fit: cover;
+      border-radius: 10px;
+      border: 1px solid rgba(255, 255, 255, 0.14);
+      background: rgba(0, 0, 0, 0.18);
+    }
+
+    .creature-type {
+      color: rgba(242, 246, 255, 0.82);
+      font-size: 12.5px;
+      font-weight: 800;
+      line-height: 1.4;
+    }
+
+    .info-section {
+      padding: 9px 0;
+      border-top: 1px solid rgba(255, 255, 255, 0.09);
+    }
+
+    .info-label {
+      margin-bottom: 5px;
+      color: rgba(242, 246, 255, 0.58);
+      font-size: 12px;
+      font-weight: 900;
+      letter-spacing: 0.02em;
+    }
+
+    .info-text {
+      color: rgba(255, 255, 255, 0.9);
+      font-size: 12.5px;
+      font-weight: 700;
+      line-height: 1.45;
+    }
+
+    .trade-line {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      align-items: center;
+    }
+
+    .trade-pill {
+      display: inline-flex;
+      padding: 4px 8px;
+      border-radius: 999px;
+      color: rgba(255, 255, 255, 0.9);
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      font-size: 11.5px;
+      font-weight: 800;
+    }
+
+
+    .filter-area {
+      margin: 12px 0 16px;
+      padding: 10px;
+      border-radius: 14px;
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(255, 255, 255, 0.09);
+    }
+
+    .filter-label {
+      margin: 0 0 8px;
+      color: rgba(242, 246, 255, 0.68);
+      font-size: 12px;
+      font-weight: 900;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+
+    .filter-buttons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 7px;
+    }
+
+    .filter-btn {
+      cursor: pointer;
+      padding: 6px 10px;
+      border-radius: 999px;
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      background: rgba(255, 255, 255, 0.06);
+      color: rgba(255, 255, 255, 0.82);
+      font-size: 12px;
+      font-weight: 800;
+    }
+
+    .filter-btn.active {
+      background: rgba(255, 255, 255, 0.18);
+      color: #ffffff;
+      border-color: rgba(255, 255, 255, 0.28);
+    }
+
+    .hidden-card {
+      display: none !important;
+    }
+
+    .no-results-message {
+      display: none;
+      margin: 10px 0 0;
+      color: rgba(242, 246, 255, 0.7);
+      font-size: 12.5px;
+      font-weight: 700;
+    }
+
+    .no-results-message.show {
+      display: block;
+    }
+
+    @media (max-width: 560px) {
+      .star-shift-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .creature-icon {
+        width: 64px;
+        height: 64px;
+        flex-basis: 64px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <main class="page">
+    <a class="back-btn" href="../../index.html">← Back to all traits</a>
+
+    <section class="detail-panel">
+      <p class="detail-kicker">Trait Details</p>
+      <h1 class="detail-title">Star Shift</h1>
+
+      <div class="detail-description-box">
+        <strong>Variant Temporary Cards Containing [Star Shift].</strong><br />
+        <strong>Max-Level Effect:</strong> Activates at the start of battle and transfers one unactivated negative trait to the opponent (<strong>Power 718</strong>).
+      </div>
+
+      <div class="gallery-header">
+        <p class="gallery-title">Related Cards / Icons</p>
+        <p class="gallery-count"><span id="visible-count">13</span> items shown</p>
+      </div>
+
+      <div class="filter-area">
+        <p class="filter-label">Filters</p>
+        <div class="filter-buttons">
+          <button class="filter-btn active" type="button" data-filter="none">None</button>
+          <button class="filter-btn" type="button" data-filter="horn">Horn</button>
+          <button class="filter-btn" type="button" data-filter="head">Head</button>
+          <button class="filter-btn" type="button" data-filter="neck">Neck</button>
+          <button class="filter-btn" type="button" data-filter="left-arm">Left Arm</button>
+          <button class="filter-btn" type="button" data-filter="right-arm">Right Arm</button>
+          <button class="filter-btn" type="button" data-filter="tail">Tail</button>
+          <button class="filter-btn" type="button" data-filter="back">Back</button>
+          <button class="filter-btn" type="button" data-filter="wings">Wings</button>
+        </div>
+        <p class="no-results-message" id="no-results-message">No cards match this filter.</p>
+      </div>
+
+
+      <div class="star-shift-grid">
+
+        <article class="creature-card" data-parts="head neck tail">
+          <h2 class="creature-name">Jade Fox [Temporary]</h2>
+
+          <div class="creature-top">
+            <img class="creature-icon" src="../../images/star-shift/icons/01-jade-fox-icon.png" alt="Jade Fox [Temporary]" />
+            <p class="creature-type">Type: 8,000 Years · Mount</p>
+          </div>
+
+          <div class="info-section">
+            <p class="info-label">Trade Info</p>
+            <div class="trade-line">
+              <span class="trade-pill">Auction</span>
+              <span class="trade-pill">Request</span>
+            </div>
+          </div>
+
+          <div class="info-section">
+            <p class="info-label">Special Attribute</p>
+            <p class="info-text">Self and Variant Parts: Jade Fox Head, Jade Fox Tail, Jade Fox Neck</p>
+          </div>
+        </article>
+
+        <article class="creature-card" data-parts="head neck tail">
+          <h2 class="creature-name">Frost Fox [Temporary]</h2>
+
+          <div class="creature-top">
+            <img class="creature-icon" src="../../images/star-shift/icons/02-frost-fox-icon.png" alt="Frost Fox [Temporary]" />
+            <p class="creature-type">Type: 10,000 Years · Mount</p>
+          </div>
+
+          <div class="info-section">
+            <p class="info-label">Trade Info</p>
+            <div class="trade-line">
+              <span class="trade-pill">Auction</span>
+              <span class="trade-pill">Request</span>
+            </div>
+          </div>
+
+          <div class="info-section">
+            <p class="info-label">Special Attribute</p>
+            <p class="info-text">Self and Variant Parts: Frost Fox Head, Frost Fox Tail, Frost Fox Neck</p>
+          </div>
+        </article>
+
+        <article class="creature-card" data-parts="head neck tail">
+          <h2 class="creature-name">Fire Fox [Temporary]</h2>
+
+          <div class="creature-top">
+            <img class="creature-icon" src="../../images/star-shift/icons/03-fire-fox-icon.png" alt="Fire Fox [Temporary]" />
+            <p class="creature-type">Type: 10,000 Years · Mount</p>
+          </div>
+
+          <div class="info-section">
+            <p class="info-label">Trade Info</p>
+            <div class="trade-line">
+              <span class="trade-pill">Auction</span>
+              <span class="trade-pill">Request</span>
+            </div>
+          </div>
+
+          <div class="info-section">
+            <p class="info-label">Special Attribute</p>
+            <p class="info-text">Self and Variant Parts: Fire Fox Head, Fire Fox Tail, Fire Fox Neck</p>
+          </div>
+        </article>
+
+        <article class="creature-card" data-parts="head neck tail">
+          <h2 class="creature-name">Hill Fox [Temporary]</h2>
+
+          <div class="creature-top">
+            <img class="creature-icon" src="../../images/star-shift/icons/04-hill-fox-icon.png" alt="Hill Fox [Temporary]" />
+            <p class="creature-type">Type: 5,000 Years · Mount</p>
+          </div>
+
+          <div class="info-section">
+            <p class="info-label">Trade Info</p>
+            <div class="trade-line">
+              <span class="trade-pill">Auction</span>
+              <span class="trade-pill">Request</span>
+            </div>
+          </div>
+
+          <div class="info-section">
+            <p class="info-label">Special Attribute</p>
+            <p class="info-text">Self and Variant Parts: Hill Fox Head, Hill Fox Tail, Hill Fox Neck</p>
+          </div>
+        </article>
+
+        <article class="creature-card" data-parts="horn head neck tail">
+          <h2 class="creature-name">Ninety-Thousand Fox [Temporary]</h2>
+
+          <div class="creature-top">
+            <img class="creature-icon" src="../../images/star-shift/icons/05-ninety-thousand-fox-icon.png" alt="Ninety-Thousand Fox [Temporary]" />
+            <p class="creature-type">Type: 8,000 Years · Mount</p>
+          </div>
+
+          <div class="info-section">
+            <p class="info-label">Trade Info</p>
+            <div class="trade-line">
+              <span class="trade-pill">Auction</span>
+              <span class="trade-pill">Request</span>
+            </div>
+          </div>
+
+          <div class="info-section">
+            <p class="info-label">Special Attribute</p>
+            <p class="info-text">Self and Variant Parts: Ninety-Thousand Fox Horn, Ninety-Thousand Fox Head, Ninety-Thousand Fox Tail, Ninety-Thousand Fox Neck</p>
+          </div>
+        </article>
+
+        <article class="creature-card" data-parts="head tail wings">
+          <h2 class="creature-name">Juvenile · Yaya [Temporary]</h2>
+
+          <div class="creature-top">
+            <img class="creature-icon" src="../../images/star-shift/icons/06-juvenile-yaya-icon.png" alt="Juvenile · Yaya [Temporary]" />
+            <p class="creature-type">Type: Juvenile · Mount</p>
+          </div>
+
+          <div class="info-section">
+            <p class="info-label">Trade Info</p>
+            <div class="trade-line">
+              <span class="trade-pill">Discard</span>
+              <span class="trade-pill">Trade</span>
+              <span class="trade-pill">Auction</span>
+              <span class="trade-pill">Request</span>
+            </div>
+          </div>
+
+          <div class="info-section">
+            <p class="info-label">Special Attribute</p>
+            <p class="info-text">Self and Variant Parts: Yaya Head, Yaya Wing, Yaya Tail</p>
+          </div>
+        </article>
+
+        <article class="creature-card" data-parts="head neck tail">
+          <h2 class="creature-name">100 Years · Hill Fox [Temporary]</h2>
+
+          <div class="creature-top">
+            <img class="creature-icon" src="../../images/star-shift/icons/07-100-years-hill-fox-icon.png" alt="100 Years · Hill Fox [Temporary]" />
+            <p class="creature-type">Type: 500 Years · Mount</p>
+          </div>
+
+          <div class="info-section">
+            <p class="info-label">Trade Info</p>
+            <div class="trade-line">
+              <span class="trade-pill">Trade</span>
+              <span class="trade-pill">Auction</span>
+              <span class="trade-pill">Request</span>
+            </div>
+          </div>
+
+          <div class="info-section">
+            <p class="info-label">Special Attribute</p>
+            <p class="info-text">Self and Variant Parts: Hill Fox Head, Hill Fox Tail, Hill Fox Neck</p>
+          </div>
+        </article>
+
+        <article class="creature-card" data-parts="head tail wings">
+          <h2 class="creature-name">100 Years · Yaya [Temporary]</h2>
+
+          <div class="creature-top">
+            <img class="creature-icon" src="../../images/star-shift/icons/08-100-years-yaya-icon.png" alt="100 Years · Yaya [Temporary]" />
+            <p class="creature-type">Type: 500 Years · Mount</p>
+          </div>
+
+          <div class="info-section">
+            <p class="info-label">Trade Info</p>
+            <div class="trade-line">
+              <span class="trade-pill">Trade</span>
+              <span class="trade-pill">Auction</span>
+              <span class="trade-pill">Request</span>
+            </div>
+          </div>
+
+          <div class="info-section">
+            <p class="info-label">Special Attribute</p>
+            <p class="info-text">Self and Variant Parts: Yaya Head, Yaya Wing, Yaya Tail</p>
+          </div>
+        </article>
+
+        <article class="creature-card" data-parts="head neck tail">
+          <h2 class="creature-name">10,000 Years · Hill Fox [Temporary]</h2>
+
+          <div class="creature-top">
+            <img class="creature-icon" src="../../images/star-shift/icons/09-10000-years-hill-fox-icon.png" alt="10,000 Years · Hill Fox [Temporary]" />
+            <p class="creature-type">Type: 18,000 Years · Mount</p>
+          </div>
+
+          <div class="info-section">
+            <p class="info-label">Trade Info</p>
+            <div class="trade-line">
+              <span class="trade-pill">Auction</span>
+              <span class="trade-pill">Request</span>
+            </div>
+          </div>
+
+          <div class="info-section">
+            <p class="info-label">Special Attribute</p>
+            <p class="info-text">Self and Variant Parts: Hill Fox Head, Hill Fox Tail, Hill Fox Neck</p>
+          </div>
+        </article>
+
+        <article class="creature-card" data-parts="head tail wings">
+          <h2 class="creature-name">10,000 Years · Yaya [Temporary]</h2>
+
+          <div class="creature-top">
+            <img class="creature-icon" src="../../images/star-shift/icons/10-10000-years-yaya-icon.png" alt="10,000 Years · Yaya [Temporary]" />
+            <p class="creature-type">Type: 13,000 Years · Mount</p>
+          </div>
+
+          <div class="info-section">
+            <p class="info-label">Trade Info</p>
+            <div class="trade-line">
+              <span class="trade-pill">Auction</span>
+              <span class="trade-pill">Request</span>
+            </div>
+          </div>
+
+          <div class="info-section">
+            <p class="info-label">Special Attribute</p>
+            <p class="info-text">Self and Variant Parts: Yaya Head, Yaya Wing, Yaya Tail</p>
+          </div>
+        </article>
+
+        <article class="creature-card" data-parts="horn head neck tail">
+          <h2 class="creature-name">Migu · Ninety-Thousand Fox [Temporary]</h2>
+
+          <div class="creature-top">
+            <img class="creature-icon" src="../../images/star-shift/icons/11-migu-ninety-thousand-fox-icon.png" alt="Migu · Ninety-Thousand Fox [Temporary]" />
+            <p class="creature-type">Type: 40,000 Years · Mount</p>
+          </div>
+
+          <div class="info-section">
+            <p class="info-label">Trade Info</p>
+            <div class="trade-line">
+              <span class="trade-pill">Auction</span>
+              <span class="trade-pill">Request</span>
+            </div>
+          </div>
+
+          <div class="info-section">
+            <p class="info-label">Special Attribute</p>
+            <p class="info-text">Self and Variant Parts: Ninety-Thousand Fox Horn, Ninety-Thousand Fox Head, Ninety-Thousand Fox Tail, Ninety-Thousand Fox Neck</p>
+          </div>
+        </article>
+
+        <article class="creature-card" data-parts="head neck tail">
+          <h2 class="creature-name">Chenxin · Fire Fox [Temporary]</h2>
+
+          <div class="creature-top">
+            <img class="creature-icon" src="../../images/star-shift/icons/12-chenxin-fire-fox-icon.png" alt="Chenxin · Fire Fox [Temporary]" />
+            <p class="creature-type">Type: 50,000 Years · Mount</p>
+          </div>
+
+          <div class="info-section">
+            <p class="info-label">Trade Info</p>
+            <div class="trade-line">
+              <span class="trade-pill">Auction</span>
+            </div>
+          </div>
+
+          <div class="info-section">
+            <p class="info-label">Special Attribute</p>
+            <p class="info-text">Self and Variant Parts: Fire Fox Head, Fire Fox Tail, Fire Fox Neck</p>
+          </div>
+        </article>
+
+        <article class="creature-card" data-parts="head tail">
+          <h2 class="creature-name">Juvenile · Hill Fox [Temporary]</h2>
+
+          <div class="creature-top">
+            <img class="creature-icon" src="../../images/star-shift/icons/13-juvenile-hill-fox-icon.png" alt="Juvenile · Hill Fox [Temporary]" />
+            <p class="creature-type">Type: Juvenile · Mount</p>
+          </div>
+
+          <div class="info-section">
+            <p class="info-label">Trade Info</p>
+            <div class="trade-line">
+              <span class="trade-pill">Discard</span>
+              <span class="trade-pill">Trade</span>
+              <span class="trade-pill">Auction</span>
+              <span class="trade-pill">Request</span>
+            </div>
+          </div>
+
+          <div class="info-section">
+            <p class="info-label">Special Attribute</p>
+            <p class="info-text">Self and Variant Parts: Hill Fox Head, Hill Fox Tail</p>
+          </div>
+        </article>
+
+      </div>
+    </section>
+  </main>
+
+  <script>
+    const filterButtons = document.querySelectorAll(".filter-btn");
+    const cards = document.querySelectorAll(".creature-card");
+    const visibleCount = document.getElementById("visible-count");
+    const noResultsMessage = document.getElementById("no-results-message");
+
+    function getActivePartFilters() {
+      return [...filterButtons]
+        .filter(button => button.classList.contains("active") && button.dataset.filter !== "none")
+        .map(button => button.dataset.filter);
+    }
+
+    function updateCount() {
+      const visibleCards = document.querySelectorAll(".creature-card:not(.hidden-card)");
+      if (visibleCount) visibleCount.textContent = visibleCards.length;
+      if (noResultsMessage) {
+        noResultsMessage.classList.toggle("show", visibleCards.length === 0);
+      }
+    }
+
+    function applyFilters() {
+      const activeFilters = getActivePartFilters();
+
+      cards.forEach(card => {
+        const parts = (card.dataset.parts || "").split(" ").filter(Boolean);
+
+        /*
+          Multiple selected filters use OR logic:
+          Example: Horn + Wings shows cards that have Horn OR Wings.
+          None shows all cards.
+        */
+        const shouldShow =
+          activeFilters.length === 0 ||
+          activeFilters.some(filter => parts.includes(filter));
+
+        card.classList.toggle("hidden-card", !shouldShow);
+      });
+
+      updateCount();
+    }
+
+    filterButtons.forEach(button => {
+      button.addEventListener("click", () => {
+        const selectedFilter = button.dataset.filter;
+        const noneButton = document.querySelector('.filter-btn[data-filter="none"]');
+
+        if (selectedFilter === "none") {
+          filterButtons.forEach(btn => btn.classList.remove("active"));
+          button.classList.add("active");
+          applyFilters();
+          return;
+        }
+
+        if (noneButton) noneButton.classList.remove("active");
+        button.classList.toggle("active");
+
+        const activeFilters = getActivePartFilters();
+
+        if (activeFilters.length === 0 && noneButton) {
+          noneButton.classList.add("active");
+        }
+
+        applyFilters();
+      });
+    });
+
+    applyFilters();
+  </script>
+
+</body>
+</html>
